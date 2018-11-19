@@ -1,0 +1,419 @@
+1 Bersuci
+2 Keutamaan bersuci Qs.2:222
+2 Membersihkan bejana (tempat) air
+3 Bejana yang suci
+4 Tempat air dari kulit Qs.16:80
+2 Kebersihan pakaian
+3 Membersihkan pakaian Qs.74:4
+2 Kebersihan badan
+3 Hal yang diharamkan bagi wanita yang sedang haid
+4 Hukum menyentuh dan membaca Al Qur'an bagi wanita haid Qs.56:79
+2 Najis
+3 Najis darah Qs.2:173 Qs.6:145 Qs.16:115
+3 Najis daging babi Qs.6:145 Qs.16:115
+3 Najis bangkai Qs.2:173
+1 Wudhu
+2 Disyariatkannya wudhu
+3 Dalil wudhu dalam Al Qur'an Qs.5:6
+2 Hukum wudhu
+3 Kewajiban wudhu
+4 Wudhu untuk shalat Qs.5:6
+2 Rukun wudhu
+3 Membasuh muka Qs.5:6
+3 Membasuh kedua tangan hingga siku Qs.5:6
+3 Tertib Qs.5:6
+3 Menyapu sebagian kepala Qs.5:6
+3 Membasuh kedua kaki Qs.5:6
+2 Yang membatalkan wudhu
+3 Keluarnya sesuatu dari dua jalan
+4 Buang air kecil dan besar Qs.4:43 Qs.5:6
+1 Mandi besar
+2 Hukum mandi
+3 Kewajiban mandi
+4 Mandi karena junub (bersetubuh atau keluar air mani) Qs.4:43 Qs.5:6
+2 Yang diharamkan dan diperbolehkan bagi orang yang junub
+3 Hukum menyentuh dan membawa Al Qur'an Qs.56:79
+3 Shalat orang yang junub Qs.5:6
+1 Tayammum
+2 Disyariatkannya tayammum
+3 Dalil dari Al Qur'an Qs.4:43
+2 Rukun tayammum
+3 Mengusap muka dan dua tangan Qs.4:43 Qs.5:6
+2 Cara-cara tayammum Qs.4:43
+2 Yang diperbolehkan bagi orang yang bertayammum
+3 Tayammum bagi orang yang luka Qs.4:43
+3 Tayammum bagi orang yang berhadas kecil Qs.4:43 Qs.5:6
+3 Tayammum bagi orang yang berhadas besar (junub) Qs.4:43 Qs.5:6
+3 Tayammum dalam perjalanan Qs.4:43 Qs.5:6
+3 Tayammum di tempat tinggal Qs.4:43 Qs.5:6
+3 Tayammum bagi orang yang sakit Qs.4:43 Qs.5:6
+1 Shalat
+2 Keutamaan Shalat
+3 Pahala Shalat Qs.4:162 Qs.5:12 Qs.7:170 Qs.9:18 Qs.9:71 Qs.11:114 Qs.13:22 Qs.23:2 Qs.24:56 Qs.31:5 Qs.33:33 Qs.35:29
+3 Shalat salah satu rukun Islam Qs.2:43 Qs.2:83 Qs.2:110 Qs.2:177 Qs.2:277 Qs.4:77 Qs.4:103 Qs.4:162 Qs.5:12 Qs.5:55 Qs.6:72 Qs.7:170 Qs.8:3 Qs.9:5 Qs.9:11 Qs.9:18 Qs.9:71 Qs.22:41 Qs.23:9 Qs.24:56 Qs.27:3 Qs.29:45 Qs.31:4 Qs.35:18 Qs.35:29 Qs.58:13 Qs.70:34 Qs.73:20 Qs.98:5
+3 Pahala menjaga shalat Qs.6:92 Qs.7:170 Qs.22:35 Qs.23:10 Qs.23:11 Qs.24:37 Qs.24:38 Qs.24:56 Qs.70:23 Qs.70:34 Qs.70:35 Qs.87:15
+3 Shalat dan surga Qs.23:10 Qs.23:11 Qs.42:38 Qs.70:35
+3 Buruknya balasan orang yang menyia-nyiakan shalat Qs.19:59 Qs.74:43 Qs.75:31
+3 Shalat batas antara muslim dan kafir Qs.2:143 Qs.9:5 Qs.9:11 Qs.31:4 Qs.77:48
+3 Shalat sebagai pendekatan diri kepada Allah Qs.2:45 Qs.15:98 Qs.19:31 Qs.20:14 Qs.21:73 Qs.26:218 Qs.26:219
+3 Shalat membentuk akhlak manusia Qs.29:45 Qs.70:22
+2 Hukum shalat
+3 Kewajiban shalat Qs.2:110 Qs.2:177 Qs.2:277 Qs.4:103 Qs.4:162 Qs.5:12 Qs.6:72 Qs.6:92 Qs.7:29 Qs.8:3 Qs.9:11 Qs.9:18 Qs.9:71 Qs.13:22 Qs.14:31 Qs.14:37 Qs.14:40 Qs.20:132 Qs.22:78 Qs.24:56 Qs.30:31 Qs.33:33 Qs.58:13
+2 Syarat-syarat shalat
+3 Menghadap kiblat waktu shalat
+4 Pemindahan kiblat Qs.2:142 Qs.2:143 Qs.2:144
+4 Kewajiban menghadap kiblat dan keutamaannya Qs.2:142 Qs.2:143 Qs.2:144 Qs.2:149 Qs.2:150
+4 Shalat yang tidak wajib menghadap kiblat
+5 Shalat di tengah berkecamuknya perang Qs.2:239 Qs.4:102
+3 Suci waktu shalat
+4 Suci syarat shalat Qs.5:6
+4 Kesucian tubuh orang yang shalat Qs.4:43
+3 Menutup aurat waktu shalat Qs.7:31
+2 Rukun-rukun shalat
+3 Membaca Al Qur'an waktu shalat
+4 Bacaan shalat Qs.73:20
+4 Membaca dengan keras waktu shalat Qs.17:110
+3 Rukuk Qs.2:125 Qs.5:55 Qs.9:112 Qs.22:26 Qs.22:77 Qs.48:29 Qs.77:48
+3 Sujud
+4 Sujud salah satu rukun shalat Qs.22:77 Qs.39:9
+4 Keutamaan tempat sujud Qs.48:29
+2 Hal yang disunnahkan dalam shalat
+3 Khusyuk dalam shalat Qs.2:45 Qs.23:2
+2 Tempat-tempat shalat
+3 Tempat yang disunnahkan shalat di atasnya
+4 Shalat di dalam mesjid Qs.7:29 Qs.24:36
+4 Keutamaan mesjid Quba' Qs.9:108
+3 Masjid-masjid
+4 Keutamaan masjid
+5 Allah suka kepada masjid Qs.7:29 Qs.24:36
+5 Keutamaan dan pahala membangun masjid Qs.24:36
+5 Mesjid sebagai rumah Allah di bumi Qs.2:114 Qs.2:187 Qs.9:17 Qs.9:18 Qs.22:40 Qs.72:18
+5 Membuat mesjid di atas kuburan Qs.18:21
+4 Etika dalam masjid
+5 Bersetubuh saat beri'tikaf dalam masjid Qs.2:187
+5 Membersihkan masjid dan membuatnya harum Qs.2:125 Qs.22:26 Qs.24:36
+5 Sikap masuk masjid Qs.7:31
+4 Yang berhak masuk masjid
+5 Hukum orang yang junub masuk dan lewat dalam masjid Qs.4:43
+5 Hukum orang musyrik masuk ke dalam masjid Qs.9:17 Qs.9:28
+2 Waktu-waktu shalat
+3 Penentuan waktu shalat Qs.17:78
+3 Keutamaan shalat pada waktunya Qs.2:238 Qs.7:170 Qs.20:14
+3 Waktu Ashar
+4 Keutamaan shalat Ashar Qs.2:238 Qs.20:130 Qs.50:39
+3 Waktu Subuh
+4 Keutamaaan shalat Subuh Qs.17:78 Qs.20:130 Qs.50:39 Qs.89:1
+2 Azan
+3 Disyariatkannya azan Qs.5:58
+3 Waktu azan
+4 Adzan Jum'at Qs.62:9
+2 Mengqadha shalat
+3 Meninggalkan shalat karena lupa Qs.38:32 Qs.38:33 Qs.107:4 Qs.107:5
+2 Menqashar shalat saat bepergian
+3 Disyariatkannya shalat qashar Qs.4:101
+2 Shalat Jum'at
+3 Keutamaan hari Jum'at
+4 Keutamaan shalat Jum'at Qs.62:9 Qs.85:3
+3 Hukum shalat Jum'at
+4 Kewajiban shalat Jum'at Qs.62:9
+4 Orang yang tidak diwajibkan shalat Jum'at
+5 Terlambat shalat Jum'at
+6 Meninggalkan shalat Jum'at karena sakit Qs.48:17
+3 Khutbah Jum'at
+4 Mendengarkan khutbah Jum'at Qs.62:11
+3 Etika hari Jum'at
+4 Jual beli pada hari Jum'at Qs.62:9 Qs.62:10 Qs.62:11
+2 Shalat sunnah
+3 Disyari'atkannya shalat sunnah dan keutamaannya
+3 Shalat malam (tahajjud)
+4 Hukum shalat malam Qs.11:114 Qs.25:64 Qs.26:219
+4 Keutamaan shalat malam Qs.11:114 Qs.17:79 Qs.50:40 Qs.73:2 Qs.73:20 Qs.76:26
+4 Waktu shalat malam Qs.3:113 Qs.17:79 Qs.25:64 Qs.26:218 Qs.32:16 Qs.39:9 Qs.50:40 Qs.51:17 Qs.73:6
+4 Ukuran bacaan pada shalat malam Qs.20:130 Qs.73:3
+4 Etika shalat malam Qs.73:20
+5 Meninggalkan kesulitan dalam shalat malam Qs.2:286 Qs.73:20
+2 Shalat Khauf (waktu perang)
+3 Sifat shalat khauf Qs.4:102
+3 Disyari'atkannya shalat khauf Qs.2:239 Qs.4:102
+3 Menqashar shalat khauf Qs.4:102
+3 Shalat ketika berkecamuknya perang Qs.2:239
+2 Shalat 'Ied (hari raya)
+3 Sunnat-sunnat shalat 'Ied
+4 Menyembelih kurban setelah shalat 'Ied Qs.108:2
+2 Sujud tilawah
+3 Ayat-ayat sujud tilawah Qs.13:15 Qs.16:49 Qs.17:107 Qs.19:58 Qs.22:18 Qs.22:77 Qs.25:60 Qs.27:25 Qs.32:15 Qs.38:24 Qs.41:37 Qs.53:62 Qs.84:21 Qs.96:19
+1 Zakat
+2 Harta
+3 Fitnah harta Qs.3:14 Qs.8:28 Qs.9:24 Qs.9:55 Qs.9:85 Qs.17:64 Qs.18:46 Qs.23:55 Qs.23:56 Qs.26:88 Qs.28:76 Qs.28:77 Qs.28:79 Qs.63:9 Qs.64:15 Qs.89:20 Qs.100:8 Qs.102:1 Qs.104:2 Qs.104:3
+3 Menjaga harta Qs.28:76 Qs.28:79 Qs.53:34 Qs.53:35
+3 Menyimpan harta Qs.4:5 Qs.25:67
+3 Kewajiban atas harta Qs.28:77 Qs.30:38 Qs.51:19 Qs.57:7 Qs.70:24 Qs.70:25 Qs.92:5
+3 Menginfaqkan harta Qs.2:215 Qs.2:254 Qs.2:261 Qs.4:37 Qs.25:67 Qs.28:54 Qs.92:5
+3 Meminta harta Qs.4:32
+3 Mengambil harta dengan cara yang tidak benar Qs.2:188 Qs.2:279 Qs.4:2 Qs.4:6 Qs.4:20 Qs.4:21 Qs.4:29 Qs.4:30 Qs.4:161 Qs.5:62 Qs.9:34 Qs.26:181 Qs.26:183 Qs.89:19
+3 Harta sebagai penopang kehidupan Qs.4:5
+2 Hukum zakat
+3 Kewajiban zakat Qs.2:110 Qs.2:177 Qs.3:180 Qs.4:37 Qs.5:12 Qs.5:55 Qs.6:141 Qs.9:5 Qs.9:11 Qs.9:18 Qs.9:34 Qs.9:71 Qs.22:78 Qs.33:33 Qs.41:7 Qs.58:13 Qs.70:24 Qs.70:25
+3 Menunaikan zakat salah satu rukun Islam Qs.2:43 Qs.2:83 Qs.2:110 Qs.2:177 Qs.2:277 Qs.4:77 Qs.4:162 Qs.5:12 Qs.5:55 Qs.9:5 Qs.9:11 Qs.9:18 Qs.9:71 Qs.22:41 Qs.31:4 Qs.58:13 Qs.73:20 Qs.98:5
+3 Zakat ajaran setiap Rasul Qs.19:31 Qs.19:55 Qs.21:73 Qs.98:5
+3 Pahala zakat dan keutamaannya Qs.2:277 Qs.7:156 Qs.9:5 Qs.9:11 Qs.9:18 Qs.9:71 Qs.23:4 Qs.23:10 Qs.23:11 Qs.24:37 Qs.24:38 Qs.24:56 Qs.30:38 Qs.30:39 Qs.31:5 Qs.33:35 Qs.34:39 Qs.35:29 Qs.42:38 Qs.47:37 Qs.51:19 Qs.57:18 Qs.73:20 Qs.92:5 Qs.92:18
+3 Balasan orang yang tidak menunaikan zakat
+4 Besarnya balasan orang yang tidak menunaikan zakat Qs.9:77 Qs.92:8
+4 Maksud harta simpanan Qs.9:34
+4 Harta simpanan akan menjadi bahan bakar di hari kiamat Qs.9:35
+4 Harta diumpamakan seperti ular Qs.3:180
+2 Pembahagian zakat
+3 Bagian orang fakir Qs.9:60 Qs.30:38 Qs.70:25
+3 Bagian orang miskin Qs.9:60 Qs.30:38 Qs.70:25
+3 Bagian amil (petugas zakat) Qs.9:60
+3 Pembaagian zakat waktu perang Qs.9:60
+3 Bagian orang yang baru memeluk Islam Qs.9:60
+3 Bagian hamba Qs.9:60
+3 Bagian orang yang berjuang di jalan Allah Qs.9:60
+3 Bagian orang yang musafir Qs.9:60 Qs.30:38
+2 Zakat tanaman dan buah-buahan Qs.6:141
+1 Puasa
+2 Keutamaan puasa dan pahalanya
+3 Menghapus dosa dengan puasa Qs.33:35
+3 Orang yang berpuasa terhindar dari perbuatan maksiat Qs.2:183
+2 Rukun-rukun puasa
+3 Menahan diri dari segala yang membatalkan puasa
+4 Masa imsak (menahan diri) Qs.2:187
+4 Yang pertama diwajibkan dalam puasa adalah menahan diri Qs.2:187
+2 Yang membatalkan puasa
+3 Makan dan minum saat berpuasa Qs.2:187
+3 Bersetubuh saat berpuasa Qs.2:187
+2 Bulan Ramadhan
+3 Keutamaan bulan Ramadhan
+4 Al Qur'an diturunkan di bulan Ramadhan Qs.2:185 Qs.97:1
+3 Hukum puasa Ramadhan
+4 Kebebasan puasa di bulan Ramadhan pada awal Islam Qs.2:184
+4 Kewajiban puasa Ramadhan Qs.2:183 Qs.2:185
+4 Puasa Ramadhan, salah satu rukun Islam Qs.2:183
+3 Penetapan bulan Ramadhan
+4 Dengan melihat hilal (bulan sabit) Qs.2:189
+3 Hal yang disunnahkan dalam puasa
+4 Shalat malam Ramadhan
+5 Malam Lailatul Qadar
+6 Kelebihan malam Lailatul Qadar Qs.44:3 Qs.44:4 Qs.97:1 Qs.97:2 Qs.97:3 Qs.97:4 Qs.97:5
+3 I'tikaf
+4 Tempat I'tikaf Qs.2:187
+4 Pekerjaan orang yang beri'tikaf
+5 Bersetubuhnya orang yang beri'tikaf Qs.2:187
+5 Puasanya orang yang beri'tikaf Qs.2:187
+3 Berbuka puasa di bulan Ramadhan
+4 Berbuka karena uzur
+5 Berbukanya orang yang sudah lanjut usia Qs.2:184
+5 Berbukanya orang yang sakit Qs.2:184 Qs.2:185
+5 Berbuka karena perjalanan jauh
+6 Berbuka dalam perjalanan Qs.2:184 Qs.2:185
+2 Mengqadha puasa
+3 Waktu qadha Qs.2:184 Qs.2:185
+3 Fidyah bagi orang yang tidak mampu berpuasa Qs.2:184
+1 Haji dan Umrah
+2 Haji
+3 Hukum haji
+4 Kewajiban haji Qs.3:97 Qs.22:27
+4 Haji salah satu rukun Islam Qs.2:196
+4 Hajinya orang-orang musyrik Qs.9:2 Qs.9:3 Qs.9:17 Qs.9:28
+3 Syarat-syarat haji Qs.3:97
+3 Haji dengan berjalan atau bekendaraan Qs.22:27
+2 Ihram
+3 Miqat (batas) ihram
+4 Batas-batas waktu ihram Qs.2:189 Qs.2:197
+3 Jenis ihram
+4 Haji Tamattu' Qs.2:196
+3 Larangan-larangan saat berihram
+4 Berbuat fasik waktu haji Qs.2:197
+4 Bertengkar waktu haji Qs.2:197
+4 Berburu hewan waktu haji Qs.5:1 Qs.5:2 Qs.5:94 Qs.5:95 Qs.5:96
+4 Bersetubuh waktu haji Qs.2:197
+3 Perbuatan yang diperbolehkan saat berihram
+4 Berjual beli Qs.2:198 Qs.22:28
+3 Tahallul dari ihram Qs.5:2 Qs.22:29
+2 Masuk tanah haram
+3 Ka'bah
+4 Pembangunan Ka'bah Qs.2:127 Qs.22:26
+4 Pembersihan berhala dari Ka'bah Qs.2:125 Qs.22:26
+4 Mewangikan Ka'bah Qs.2:125 Qs.22:26
+3 Keutamaan tanah suci Mekah
+4 Keamanan di tanah suci Mekah Qs.14:35 Qs.22:25 Qs.28:57 Qs.29:67 Qs.95:3 Qs.105:2 Qs.105:3 Qs.105:4 Qs.105:5
+4 Masjidil-Haram sebagai masjid pertama Qs.2:125 Qs.3:96 Qs.22:33
+4 Penyebutan Baitul Haram Qs.2:125 Qs.2:127 Qs.2:144 Qs.2:149 Qs.2:150 Qs.2:158 Qs.2:191 Qs.2:194 Qs.2:196 Qs.2:217 Qs.3:96 Qs.3:97 Qs.5:2 Qs.5:97 Qs.8:34 Qs.8:35 Qs.9:5 Qs.9:7 Qs.9:19 Qs.9:28 Qs.14:37 Qs.17:1 Qs.17:7 Qs.22:25 Qs.22:26 Qs.22:29 Qs.22:33 Qs.28:57 Qs.29:67 Qs.48:25 Qs.48:27 Qs.52:4 Qs.106:3
+3 Kemuliaan Mekah
+4 Kemuliaan Masjidil-Haram Qs.2:125 Qs.2:126 Qs.2:191 Qs.3:97 Qs.14:37 Qs.22:25 Qs.27:91 Qs.28:57 Qs.29:67 Qs.105:1
+4 Kekafiran di tanah Haram Qs.22:25
+4 Peperangan di tanah Haram Qs.2:191 Qs.3:97 Qs.5:2
+4 Peperangan di bulan-bulan Haram Qs.2:194 Qs.2:217 Qs.9:5
+4 Membunuh hewan tanah Haram Qs.5:1 Qs.5:2 Qs.5:95 Qs.5:96
+4 Berlindungnya pelaku maksiat di tanah Haram Qs.3:97
+4 Kota Mekah dihalalkan untuk Nabi saw. Qs.90:2
+4 Masuknya orang musyrik ke Mekah Qs.9:2 Qs.9:3 Qs.9:6 Qs.9:7 Qs.9:17 Qs.9:28
+2 Thawaf
+3 Jenis-jenis thawaf
+4 Tawaf Ifadhah Qs.22:29
+3 Sunat-sunat thawaf
+4 Shalat setelah tawaf Qs.2:125
+3 Minum air Zamzam
+4 Memberi minum orang-orang yang haji Qs.9:19
+2 Sa'i antara Safa dan Marwah
+3 Hukum sa'i Qs.2:158
+3 Yang pertama kali dilakukan saat sa'i Qs.2:158
+2 Wukuf di padang Arafah
+3 Keutamaan hari Arafah Qs.85:3 Qs.89:2
+3 Keluar dari Arafah
+4 Berbondong-bondong keluar dari Arafah Qs.2:198 Qs.2:199
+2 Muzdalifah
+3 Berhenti di Muzdalifah pada masa Jahiliah Qs.2:199
+2 Hari raya kurban
+3 Keutamaan hari raya kurban Qs.89:2
+2 Hadyu (binatang kurban) dan kurban
+3 Hewan yang memenuhi syarat hadyu atau kurban Qs.22:36
+3 Menyembelih binatang kurban
+4 Cara menyembelih unta atau sapi Qs.22:36
+3 Bersedekah dan makan daging hewan kurban Qs.22:28 Qs.22:36
+3 Hadyu
+4 Hukum hadyu Qs.5:2 Qs.5:97
+4 Tempat jual beli hadyu Qs.22:33
+4 Waktu penyembelihan Qs.2:196 Qs.22:28
+4 Tempat penyembelihan Qs.2:196 Qs.22:33
+4 Hadyu dari haji tamattu' Qs.2:196
+4 Membawa hadyu ke Mekah Qs.22:33
+4 Anak hewan kurban Qs.22:33
+3 Kurban
+4 Waktu penyembelihan Qs.22:28 Qs.108:2
+2 Bercukur
+3 Dalil pelaksanaan bercukur Qs.48:27
+3 Waktu bercukur, waktu haji dan umrah Qs.2:196 Qs.22:29
+3 Bercukur sebelum menyembelih Qs.2:196
+3 Bercukur dan memendekkan rambut setelah umrah Qs.48:27
+2 Kembali dari haji dan umrah
+3 Cara masuk ke rumah Qs.2:189
+2 Ihshar (pengepungan)
+3 Makna ihshar dalam haji Qs.48:25
+3 Ihshar orang yang haji Qs.2:196
+3 Ihshar orang yang umrah Qs.2:196 Qs.48:25
+3 Kafarat ihshar Qs.2:196
+2 Kafarat haji
+3 Kafarat mencukur kepala Qs.2:196
+3 Apa yang wajib pada kafarat haji Qs.2:196
+1 Sumpah dan nazar
+2 Sumpah
+3 Pembagian sumpah
+4 Sumpah sungguh-sungguh Qs.2:225 Qs.5:89
+4 Sumpah main-main Qs.2:225 Qs.5:89
+4 Sumpah palsu Qs.3:77 Qs.6:109 Qs.9:42 Qs.9:107 Qs.58:14
+3 Yang dijadikan sumpah
+4 Yang dijadikan sumpah oleh Allah Qs.15:72 Qs.15:92 Qs.16:56 Qs.16:63 Qs.36:2 Qs.37:1 Qs.37:2 Qs.37:3 Qs.38:84 Qs.43:2 Qs.44:2 Qs.50:1 Qs.51:1 Qs.51:2 Qs.51:3 Qs.51:4 Qs.51:7 Qs.51:23 Qs.52:1 Qs.52:2 Qs.52:3 Qs.52:4 Qs.52:5 Qs.52:6 Qs.53:1 Qs.56:75 Qs.68:1 Qs.69:38 Qs.69:39 Qs.70:40 Qs.74:32 Qs.74:33 Qs.74:34 Qs.75:1 Qs.75:2 Qs.77:1 Qs.77:2 Qs.77:3 Qs.77:4 Qs.77:5 Qs.79:1 Qs.79:2 Qs.79:3 Qs.79:4 Qs.79:5 Qs.81:15 Qs.81:16 Qs.81:17 Qs.81:18 Qs.84:16 Qs.84:17 Qs.84:18 Qs.85:1 Qs.85:2 Qs.85:3 Qs.86:1 Qs.86:11 Qs.86:12 Qs.89:1 Qs.89:2 Qs.89:3 Qs.89:4 Qs.89:5 Qs.90:1 Qs.90:3 Qs.91:1 Qs.91:2 Qs.91:3 Qs.91:4 Qs.91:5 Qs.91:6 Qs.91:7 Qs.92:1 Qs.92:2 Qs.92:3 Qs.93:1 Qs.93:2 Qs.95:1 Qs.95:2 Qs.95:3 Qs.100:1 Qs.100:2 Qs.100:3 Qs.103:1
+4 Sumpah dengan menyebut nama Allah Qs.4:62 Qs.5:106 Qs.5:107 Qs.6:109 Qs.9:62 Qs.9:74 Qs.9:95 Qs.12:73 Qs.12:85 Qs.12:91 Qs.12:95 Qs.16:56 Qs.16:63 Qs.21:57 Qs.24:6 Qs.24:8 Qs.26:97
+3 Melanggar sumpah
+4 Perintah melaksanakan sumpah Qs.5:89 Qs.16:95
+4 Yang dianggap melanggar sumpah Qs.2:225
+4 Mengubah sumpah karena hal lain yang lebih perlu Qs.2:224 Qs.24:22
+4 Kafarat melanggar sumpah
+5 Disyariatkannya kafarat pelanggaran sumpah Qs.5:89 Qs.66:2
+5 Yang berlaku pada kafarat sumpah Qs.5:89
+5 Memilih kafarat sumpah Qs.5:89
+3 Menjatuhi hukuman dengan dasar sumpah
+4 Sumpah-sumpah Li'an Qs.24:6 Qs.24:7 Qs.24:8 Qs.24:9
+3 Beberapa hukum yang berkaitan dengan orang yang sumpah
+4 Bersumpah untuk memutuskan tali silaturahmi Qs.24:22
+2 Nazar
+3 Melaksanakan nazar
+4 Hukum melaksanakan nazar Qs.22:29 Qs.38:44 Qs.76:7
+4 Hal yang memenuhi pelaksanaan nazar Qs.2:270
+4 Beberapa contoh nazar dalam Al Qur'an Qs.3:35 Qs.19:26
+1 Zikir
+2 Keutamaan majelis-majelis zikir
+3 Keutamaan zikir Qs.2:152 Qs.2:156 Qs.2:185 Qs.2:198 Qs.2:203 Qs.8:45 Qs.9:112 Qs.13:28 Qs.18:24 Qs.20:34 Qs.24:37 Qs.29:45 Qs.33:21 Qs.33:35 Qs.62:10 Qs.63:9 Qs.87:15
+3 Banyak-banyak berzikir kepada Allah Qs.2:200 Qs.3:41 Qs.4:103 Qs.8:45 Qs.20:33 Qs.20:34 Qs.20:130 Qs.22:40 Qs.26:227 Qs.33:21 Qs.33:35 Qs.33:41 Qs.62:10
+3 Zikir yang paling baik Qs.13:28 Qs.18:46 Qs.19:76
+2 Etika zikir kepada Allah
+3 Zikir setiap saat Qs.3:191 Qs.4:103
+3 Takut dan menangis saat berzikir Qs.7:205 Qs.8:2 Qs.17:109 Qs.19:58 Qs.22:35
+3 Menangis ketika membaca Al Qur'an Qs.5:83 Qs.19:58
+3 Merendahkan suara ketika berzikir Qs.7:205
+2 Klasifikasi zikir
+3 Istighfar (mohon ampun)
+4 Keutamaan istighfar Qs.2:199 Qs.3:17 Qs.4:64 Qs.4:106 Qs.4:110 Qs.5:74 Qs.7:153 Qs.7:161 Qs.8:33 Qs.11:3 Qs.11:52 Qs.11:90 Qs.12:29 Qs.18:55 Qs.24:5 Qs.24:62 Qs.26:51 Qs.26:82 Qs.27:46 Qs.28:16 Qs.38:25 Qs.40:3 Qs.51:15 Qs.51:16 Qs.60:12 Qs.71:10 Qs.71:11 Qs.71:12 Qs.73:20 Qs.110:3
+4 Tempat-tempat istighfar Qs.2:199
+4 Perintah beristighfar Qs.2:199 Qs.11:52 Qs.11:61 Qs.11:90 Qs.73:20
+4 Istighfar Nabi saw. Qs.3:159 Qs.4:64 Qs.4:106 Qs.9:80 Qs.23:118 Qs.24:62 Qs.40:55 Qs.47:19 Qs.60:12 Qs.110:3
+4 Istighfar para Nabi as. Qs.3:159 Qs.7:23 Qs.7:143 Qs.7:155 Qs.11:47 Qs.12:92 Qs.12:97 Qs.12:98 Qs.14:41 Qs.19:47 Qs.23:118 Qs.24:62 Qs.26:82 Qs.26:86 Qs.28:16 Qs.38:24 Qs.38:35 Qs.40:55 Qs.47:19 Qs.60:4 Qs.60:12 Qs.63:5 Qs.63:6 Qs.71:28 Qs.110:3
+4 Istighfar orang-orang beriman Qs.2:199 Qs.2:285 Qs.2:286 Qs.3:16 Qs.3:17 Qs.3:193 Qs.23:109 Qs.51:18 Qs.59:10 Qs.66:8
+4 Istighfar untuk kedua orang tua Qs.9:113 Qs.9:114 Qs.14:41 Qs.17:24 Qs.19:47 Qs.26:86 Qs.60:4 Qs.71:28
+4 Istighfar untuk saudara Qs.7:151
+4 Istighfar untuk orang-orang musyrik Qs.9:80 Qs.9:113 Qs.9:114
+4 Istighfar malaikat untuk orang-orang mukmin Qs.40:7 Qs.40:8 Qs.40:9 Qs.42:5
+4 Kapan disunnatkan istighfar Qs.3:17 Qs.3:135
+3 Isti'azah (mohon perlindungan)
+4 Jenis-jenis isti'azah
+5 Mohon perlindungan dari sifat hasad Qs.113:5
+5 Mohon perlindungan dari hal-hal yang dibenci Qs.19:18 Qs.40:56
+5 Mohon perlindungan dari bahaya angin, hujan dan awan Qs.113:2
+5 Mohon perlindungan dari kawan yang jahat Qs.113:2
+5 Mohon perlindungan dari bahaya malam Qs.113:3
+5 Mohon perlindungan dari syetan jin dan manusia Qs.3:36 Qs.7:200 Qs.16:98 Qs.23:97 Qs.23:98 Qs.40:27 Qs.41:36 Qs.113:2 Qs.114:4 Qs.114:5 Qs.114:6
+5 Allah melindungi orang yang mohon perlindungan kepadaNya Qs.113:1 Qs.114:1
+5 Mohon perlindungan dari api neraka Qs.2:201 Qs.3:16 Qs.3:191 Qs.25:65
+3 Basmalah (Bismillahirrahmanirrahiim)
+4 Membaca basmalah ketika menyembelih Qs.6:118 Qs.6:119 Qs.6:121
+4 Membaca basmalah ketika berburu Qs.6:118 Qs.6:119 Qs.6:121
+4 Membaca basmalah pada setiap keadaan Qs.1:1 Qs.11:41 Qs.27:30
+3 Takbir (Allahu Akbar)
+4 Takbir pada hari-hari Tasyrik Qs.2:203
+4 Takbir antara Arafah dan Muzdalifah Qs.2:198
+4 Takbir untuk mengagungkan Allah Qs.17:111 Qs.22:37 Qs.74:3
+3 Zikir saat shalat
+4 Zikir setelah shalat Qs.4:103 Qs.50:40 Qs.76:26
+3 Tasbih
+4 Tasbihnya makhluk-makhluk dengan memuji Allah Qs.1:2 Qs.7:206 Qs.13:13 Qs.16:48 Qs.16:49 Qs.17:44 Qs.21:20 Qs.21:79 Qs.22:18 Qs.24:41 Qs.25:58 Qs.35:34 Qs.37:166 Qs.38:18 Qs.39:75 Qs.40:7 Qs.41:38 Qs.42:5 Qs.50:39 Qs.50:40 Qs.55:6 Qs.57:1 Qs.59:1 Qs.59:24 Qs.61:1 Qs.62:1 Qs.64:1
+4 Tasbih sebagai tanda kesucian Allah Qs.2:116 Qs.3:191 Qs.4:171 Qs.5:116 Qs.6:100 Qs.7:143 Qs.9:31 Qs.10:18 Qs.10:68 Qs.12:108 Qs.15:98 Qs.16:1 Qs.16:57 Qs.17:1 Qs.17:43 Qs.17:44 Qs.17:93 Qs.17:108 Qs.19:35 Qs.21:22 Qs.23:91 Qs.25:18 Qs.27:8 Qs.30:40 Qs.34:41 Qs.36:36 Qs.36:83 Qs.37:159 Qs.37:180 Qs.39:4 Qs.39:67 Qs.43:13 Qs.43:82 Qs.52:43 Qs.52:49 Qs.56:74 Qs.56:96 Qs.59:23 Qs.68:29 Qs.69:52 Qs.87:1
+4 Tasbih ketika mensyukuri nikmat Qs.3:41 Qs.10:10 Qs.19:11 Qs.43:13 Qs.110:3
+4 Tasbih ketika takjub Qs.17:93 Qs.24:16
+4 Tasbih ketika mendengar petir Qs.13:13
+4 Keutamaan tasbih, tahmid dan tahlil Qs.9:112 Qs.21:87 Qs.24:36 Qs.37:143 Qs.40:55 Qs.48:9 Qs.52:48 Qs.52:49 Qs.68:28
+3 Tahmid (memuji Allah)
+4 Hanya Allah yang berhak dipuji Qs.1:2 Qs.6:1 Qs.6:45 Qs.10:10 Qs.14:39 Qs.16:75 Qs.16:114 Qs.17:111 Qs.18:1 Qs.23:28 Qs.27:15 Qs.27:59 Qs.27:93 Qs.28:70 Qs.29:63 Qs.30:18 Qs.31:25 Qs.34:1 Qs.35:34 Qs.37:182 Qs.39:29 Qs.39:74 Qs.39:75 Qs.40:7 Qs.45:36 Qs.64:1
+4 Memuji Allah atas nikmat-nikmatNya Qs.1:2 Qs.5:20 Qs.5:89 Qs.6:1 Qs.6:45 Qs.7:43 Qs.14:39 Qs.16:78 Qs.16:114 Qs.16:121 Qs.23:28 Qs.25:58 Qs.27:15 Qs.27:16 Qs.27:19 Qs.27:59 Qs.30:18 Qs.34:1 Qs.35:34 Qs.37:182 Qs.93:11
+2 Tempat-tempat zikir
+3 Zikir di Masy'aril Haram Qs.2:198
+3 Zikir di Mina Qs.2:203
+3 Zikir di hari-hari tasyrik Qs.2:203
+2 Waktu-waktu zikir
+3 Zikir setelah ibadat Qs.2:185 Qs.2:200 Qs.4:103 Qs.22:28
+3 Zikir Ketika ditimpa bala Qs.2:156 Qs.3:173 Qs.20:25 Qs.20:26 Qs.20:33 Qs.20:34
+3 Zikir ketika lupa Qs.18:24
+3 Zikir di setiap waktu Qs.3:41 Qs.7:205 Qs.30:17 Qs.30:18 Qs.33:41 Qs.33:42 Qs.38:18 Qs.40:55 Qs.48:9 Qs.52:48 Qs.52:49 Qs.73:8 Qs.76:25
+3 Bacaan zikir pada waktu pagi dan sore Qs.7:205
+3 Ancaman bagi yang melupakan zikir kepada Allah Qs.4:142 Qs.5:91 Qs.7:205 Qs.10:92 Qs.20:124 Qs.21:1 Qs.24:37 Qs.25:18 Qs.63:9
+3 Zikir ketika menghadapi musuh Qs.8:45
+2 Sebab-sebab zikir Qs.5:4 Qs.6:118 Qs.6:119 Qs.6:121 Qs.22:28 Qs.22:34 Qs.22:36
+1 Do'a
+2 Keutamaan do'a Qs.2:186 Qs.2:201 Qs.3:38 Qs.3:39 Qs.19:7 Qs.20:36 Qs.20:37 Qs.21:76 Qs.21:84 Qs.21:88 Qs.21:90 Qs.23:41 Qs.26:119 Qs.26:170 Qs.27:62 Qs.28:16 Qs.28:21 Qs.35:10 Qs.37:101 Qs.38:36 Qs.38:43 Qs.40:60
+2 Perintah berdo'a Qs.7:29 Qs.7:55 Qs.7:56 Qs.9:103
+2 Etika berdo'a
+3 Ikhlas dalam berdo'a Qs.7:29 Qs.10:22 Qs.29:65 Qs.31:32 Qs.40:14 Qs.40:65
+3 Berdo'a antara suara pelan dan keras Qs.7:55 Qs.7:205 Qs.17:110
+3 Mengulang-ulang do'a Qs.11:45 Qs.19:4
+2 Waktu-waktu berdoa dan sebab-sebabnya
+3 Doa hendak berperang Qs.2:250 Qs.3:147
+3 Doa mohon kejelekan Qs.10:11 Qs.17:11
+3 Doa mohon petunjuk (hidayah) Qs.1:6 Qs.2:70 Qs.7:89 Qs.18:24 Qs.28:22
+3 Doa mohon kebaikan hidup Qs.1:6 Qs.3:8 Qs.3:16 Qs.3:191 Qs.3:193 Qs.3:194 Qs.7:126 Qs.7:156 Qs.12:101 Qs.26:83 Qs.26:84 Qs.26:85 Qs.26:87 Qs.27:19 Qs.52:28 Qs.66:11
+3 Doa mohon ampunan dosa Qs.2:58 Qs.2:285 Qs.3:16 Qs.3:135 Qs.3:147 Qs.3:193 Qs.7:23 Qs.7:151 Qs.7:155 Qs.11:47 Qs.14:41 Qs.23:109 Qs.23:118 Qs.26:51 Qs.26:82 Qs.26:86 Qs.28:16 Qs.59:10 Qs.60:5 Qs.66:8 Qs.71:28
+3 Doa mohon dikaruniai anak Qs.3:38 Qs.7:189 Qs.21:89
+3 Doa saat selesai haji Qs.22:28
+3 Doa untuk keburukan lawan Qs.2:286 Qs.3:147 Qs.10:88 Qs.21:112 Qs.29:30 Qs.54:10 Qs.71:24 Qs.71:26 Qs.71:28 Qs.111:1
+3 Doa ketika takut Qs.3:173 Qs.6:63 Qs.28:21 Qs.28:33
+3 Doa ketika sakit Qs.21:83 Qs.38:41
+3 Doa ketika naik kendaraan Qs.43:13 Qs.43:14
+3 Doa ketika terjadi musibah Qs.6:40 Qs.6:41 Qs.6:63 Qs.7:94 Qs.7:126 Qs.10:12 Qs.10:22 Qs.10:86 Qs.17:67 Qs.18:10 Qs.21:87 Qs.23:26 Qs.23:39 Qs.26:117 Qs.26:118 Qs.26:119 Qs.26:169 Qs.27:62 Qs.28:16 Qs.28:21 Qs.28:24 Qs.28:47 Qs.29:65 Qs.30:33 Qs.31:32 Qs.39:8 Qs.39:49 Qs.41:51 Qs.44:22
+3 Doa untuk kebaikan muslimin Qs.59:10 Qs.71:28
+2 Doa para nabi Qs.2:124 Qs.2:126 Qs.2:127 Qs.2:128 Qs.2:129 Qs.2:260 Qs.3:38 Qs.3:41 Qs.5:114 Qs.7:23 Qs.7:89 Qs.7:134 Qs.7:135 Qs.7:143 Qs.7:151 Qs.7:155 Qs.9:129 Qs.10:88 Qs.10:89 Qs.11:45 Qs.12:33 Qs.12:34 Qs.12:83 Qs.12:92 Qs.12:101 Qs.14:15 Qs.14:35 Qs.14:36 Qs.14:37 Qs.14:38 Qs.14:39 Qs.14:40 Qs.14:41 Qs.17:80 Qs.19:4 Qs.19:5 Qs.19:6 Qs.19:7 Qs.19:10 Qs.20:25 Qs.20:26 Qs.20:27 Qs.20:28 Qs.20:29 Qs.20:30 Qs.20:31 Qs.20:32 Qs.20:33 Qs.20:34 Qs.20:35 Qs.21:76 Qs.21:83 Qs.21:84 Qs.21:87 Qs.21:89 Qs.21:90 Qs.23:26 Qs.23:29 Qs.23:39 Qs.23:93 Qs.23:94 Qs.23:97 Qs.23:98 Qs.23:118 Qs.26:13 Qs.26:78 Qs.26:79 Qs.26:80 Qs.26:81 Qs.26:82 Qs.26:83 Qs.26:84 Qs.26:85 Qs.26:86 Qs.26:87 Qs.26:88 Qs.26:89 Qs.26:117 Qs.26:118 Qs.26:169 Qs.27:19 Qs.28:34 Qs.29:30 Qs.37:75 Qs.37:100 Qs.38:35 Qs.40:27 Qs.44:20 Qs.44:22 Qs.54:10 Qs.60:4 Qs.68:48 Qs.71:26 Qs.71:27 Qs.71:28
+2 Doa orang-orang beriman Qs.1:5 Qs.1:6 Qs.3:35 Qs.3:36 Qs.3:53 Qs.3:191 Qs.3:192 Qs.3:193 Qs.3:194 Qs.4:75 Qs.5:83 Qs.10:85 Qs.10:86 Qs.17:24 Qs.17:80 Qs.17:110 Qs.17:111 Qs.18:24 Qs.23:109 Qs.25:65 Qs.25:74 Qs.40:44 Qs.46:15 Qs.52:28 Qs.60:4 Qs.60:5 Qs.66:11 Qs.113:1 Qs.113:2 Qs.113:3 Qs.113:4 Qs.113:5 Qs.114:1 Qs.114:2 Qs.114:3 Qs.114:4 Qs.114:5 Qs.114:6
+2 Doa malaikat untuk orang-orang beriman Qs.11:73 Qs.40:7 Qs.40:8 Qs.40:9
+2 Terkabulnya do'a
+3 Doa para nabi dikabulkan Qs.2:260 Qs.3:39 Qs.3:41 Qs.5:115 Qs.10:89 Qs.12:34 Qs.19:7 Qs.19:10 Qs.20:36 Qs.21:76 Qs.21:77 Qs.21:84 Qs.21:88 Qs.21:90 Qs.26:119 Qs.26:120 Qs.26:170 Qs.26:171 Qs.26:172 Qs.26:173 Qs.28:35 Qs.29:31 Qs.29:32 Qs.29:33 Qs.29:34 Qs.37:75 Qs.37:101 Qs.38:25 Qs.38:36 Qs.38:39 Qs.44:23 Qs.44:24 Qs.54:11 Qs.54:12 Qs.54:13 Qs.68:50
+3 Doa orang-orang beriman dikabulkan Qs.2:186 Qs.3:37 Qs.3:195 Qs.8:9 Qs.40:45 Qs.40:46 Qs.40:60 Qs.42:26
+2 Berdo'a bukan kepada Allah Qs.6:71 Qs.7:194 Qs.7:195 Qs.7:197 Qs.10:106 Qs.11:101 Qs.13:14 Qs.17:56 Qs.17:67 Qs.18:52 Qs.22:12 Qs.22:62 Qs.22:73 Qs.26:213 Qs.28:64 Qs.31:30 Qs.34:32 Qs.35:13 Qs.35:14 Qs.35:40 Qs.39:38 Qs.40:20 Qs.41:48 Qs.43:86 Qs.46:5

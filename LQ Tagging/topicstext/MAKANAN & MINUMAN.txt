@@ -1,0 +1,52 @@
+1 Minuman
+2 Minuman yang diharamkan
+3 Hukum minum arak
+4 Diharamkannya arak dan tahap-tahap pengharamannya Qs.2:219 Qs.4:43 Qs.5:90 Qs.5:91 Qs.16:67
+1 Makanan
+2 Macam-macam makanan
+3 Makanan yang halal
+4 Semua yang baik asalnya halal Qs.2:57 Qs.2:168 Qs.2:172 Qs.5:1 Qs.5:4 Qs.5:5 Qs.5:88 Qs.6:141 Qs.6:142 Qs.6:143 Qs.6:144 Qs.6:145 Qs.7:157 Qs.7:160 Qs.16:72 Qs.16:114 Qs.17:70 Qs.22:30 Qs.23:51
+4 Pengharaman yang dihalalkan Allah Qs.3:93 Qs.5:87 Qs.5:103 Qs.6:138 Qs.6:139 Qs.6:140 Qs.6:143 Qs.6:144 Qs.7:32 Qs.10:59 Qs.16:35 Qs.16:116 Qs.66:1
+4 Hukum makan kuda Qs.16:8
+4 Hukum makan bangkai binatang laut Qs.5:96 Qs.16:14 Qs.35:12
+4 Hukum makan ikan Qs.5:96 Qs.16:14 Qs.35:12
+4 Hukum makan makanan Ahli Kitab Qs.5:5
+3 Makanan yang diharamkan
+4 Pengharaman memakan darah Qs.2:173 Qs.5:3 Qs.6:145 Qs.7:133 Qs.16:115
+4 Pengharaman segala yang kotor Qs.2:173 Qs.2:219 Qs.7:157
+4 Hukum bangkai
+5 Hukum makan bangkai Qs.2:173 Qs.5:3 Qs.6:145 Qs.16:115
+4 Hukum makan daging babi Qs.2:173 Qs.5:3 Qs.6:145 Qs.16:115
+4 Rukhshah (dispensasi) makan barang haram karena terpaksa Qs.2:173 Qs.5:3 Qs.6:119 Qs.6:145 Qs.16:115
+2 Etika pada makanan
+3 Larangan berlebih-lebihan Qs.6:141 Qs.7:31 Qs.90:6
+2 Undangan makan
+3 Berkumpul untuk makan Qs.24:61
+3 Hak orang lain pada makanan
+4 Hak orang lapar pada makanan Qs.68:24 Qs.90:14
+4 Hak orang miskin pada makanan Qs.74:44 Qs.76:8 Qs.89:18 Qs.90:16
+3 Mengutamakan sebagian makanan dari makanan lain Qs.13:4 Qs.18:19
+3 Berjalan setelah makan Qs.33:53
+3 Bercakap-cakap dengan tamu Qs.33:53
+2 Penyembelihan
+3 Cara-cara menyembelih
+4 Membaca bismillah sebelum menyembelih Qs.16:115 Qs.22:34 Qs.22:36
+4 Cara meletakkan binatang ketika disembelih Qs.22:36
+4 Cara menyembelih binatang yang jatuh dan yang lari Qs.5:3
+3 Syarat makan binatang sembelihan
+4 Menyebut nama Allah ketika menyembelih Qs.5:3 Qs.6:118 Qs.6:119 Qs.6:121 Qs.22:34 Qs.22:36
+4 Menyembelih dan menyebut nama selain Allah Qs.2:173 Qs.5:3 Qs.6:121 Qs.6:138 Qs.6:145 Qs.16:115
+4 Pengharaman sembelihan karena selain Allah Qs.2:173 Qs.5:3 Qs.6:145 Qs.16:115
+2 Berburu
+3 Disyariatkannya berburu Qs.5:4 Qs.5:96
+3 Perlengkapan berburu
+4 Berburu dengan cara melempar Qs.5:3
+4 Berburu dengan panah Qs.5:94
+4 Berburu dengan anjing
+5 Hukum hewan buruan yang dimakan anjing Qs.5:3
+5 Anjing pemburu Qs.5:4
+3 Hukum yang bersangkutan dengan berburu
+4 Yang dimakan binatang buas haram kecuali setelah disembelih Qs.5:3
+4 Membaca bismillah ketika berburu Qs.5:4
+4 Hukum berburu pada saat ihram Qs.5:1 Qs.5:2 Qs.5:94 Qs.5:95 Qs.5:96
+4 Kafarat berburu pada saat ihram Qs.5:95
