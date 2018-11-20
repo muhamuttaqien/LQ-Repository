@@ -1,2 +1,2 @@
 # LearnQuran
-My own dictionary to explore LearnQuran product tech https://learn-quran.co/
+My own repository to explore LearnQuran product tech https://learn-quran.co/
