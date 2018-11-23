@@ -7,20 +7,22 @@
 import scrapy
 
 class ShopcluesSpider(scrapy.Spider):
-    #name of spider
+    # name of spider
     name = 'shopclues'
 
-    #list of allowed domains
+    # list of allowed domains
     allowed_domains = ['www.shopclues.com/mobiles-feature-phones.html']
     #starting url
     start_urls = ['https://www.shopclues.com/mobiles-feature-phones.html?sort_by=sort_price&sort_order=asc&facet_brand[]=Ikall&fsrc=facet_brand/']
-    #location of csv file
+    # location of csv file
     custom_settings = {
         'FEED_URI' : 'tmp/shopclues.csv'
     }
 
     def parse(self, response):
-        #Extract product information
+        print('starts crawling...')
+        
+        # extract product information
         titles = response.css('.column.col3 h2::text').extract()
         prices = response.css('.column.col3 .p_price::text').extract()
         discounts = response.css('.column.col3 .prd_discount::text').extract()
