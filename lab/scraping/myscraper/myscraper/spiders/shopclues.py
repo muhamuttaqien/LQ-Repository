@@ -16,7 +16,8 @@ class ShopcluesSpider(scrapy.Spider):
     start_urls = ['https://www.shopclues.com/mobiles-feature-phones.html?sort_by=sort_price&sort_order=asc&facet_brand[]=Ikall&fsrc=facet_brand/']
     # location of csv file
     custom_settings = {
-        'FEED_URI' : 'tmp/shopclues.csv'
+        'FEED_URI' : 'tmp/shopclues.csv',
+        'FEED_FORMAT': 'csv'
     }
 
     def parse(self, response):
