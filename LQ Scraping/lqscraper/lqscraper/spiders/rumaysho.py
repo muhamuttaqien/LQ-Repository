@@ -2,27 +2,23 @@
 import scrapy
 
 
-class RumayshoSpider(scrapy.Spider):
+class RumayshoPage(scrapy.Spider):
     name = 'rumaysho'
-    allowed_domains = ['rumaysho.com']
-    start_urls = ['http://rumaysho.com/',
-                  'https://rumaysho.com/18958-hadits-arbain-15-berkata-yang-baik-memuliakan-tamu-dan-tetangga.html']
+    start_urls = ['https://rumaysho.com/category/belajar-islam']
 
     custom_settings = {
         'FEED_URI': 'tmp/rumaysho.csv',
     }
     
     def parse(self, response):
-        
-        # extract article information
-        titles = response.css('.td-ss-main-content h1.entry-title::text').extract()
-        contents = response.css('.pf-content p').extract()
-        
-        for item in zip(titles, contents):
-
-            scraped_info = {
-                'titles': item[0],
-                'contents': contents
-            }
+        for page_url in response.css('.page-nav a ::attr("href")').extract():
+            yield response.follow(page_url, callback=self.parse_page)
             
-            yield scraped_info
+    def parse_page(self, response):
+        for article_url in response.css('.entry-title a ::attr("href")').extract():
+            yield response.follow(article_url, callback=self.parse_article)
+    
+    def parse_article(self, response):
+        titles = response.css('.td-ss-main-content h1.entry-title::text').extract()
+        content = response.css('.pf-content p').extract()
+        yield {'titles': titles, 'contents': ''.join(content)}
