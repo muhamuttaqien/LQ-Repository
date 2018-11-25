@@ -1,0 +1,2205 @@
+article
+"
+										When I started web development, the developer tools were so new to me I thought I would save time not using them in the first place. I quickly realized how wrong I was as I started using them. No more console.log required, debugging became a piece of cake in a lot of cases!
+The Network tab is used to track all the interactions between your front end and your back end, thus the network.
+In this article, I will show usages of the developer tools Network tab on Google Chrome web browser.
+Let’s start exploring the network tab!
+Record the network logs
+The first thing to do is to record the network logs by making sure the record button is activated before going on the page you want to record: 
+
+Check the response of a request sent to your server
+You can keep only the requests sent to your server by clicking on the filter icon and then selecting “XHR”:
+
+In that section, you can see some information about your requests:
+
+HTTP status code
+Type of request
+Size of the request
+Etc.
+
+To get more details about a request, you can simply click on it.
+Let’s look at the my-shortcuts endpoint that retrieves the shortcuts of an user connected on the application I am using. You can look at the formatted response by clicking on the “Preview” tab: 
+
+If the response of an XHR is an image, you will be able to preview the image instead.
+On this tab, it becomes easy to determine if the format of the response corresponds to what your front end expected.
+Great! Now you know how to check the response of a request sent to your server without writing any console.log in your code!
+Test your requests with various Internet connection speeds
+If the users of the application you are developing have a lower Internet speed than yours, it can be interesting to test your application with custom Internet speed.
+It is possible to do so by using bandwidth throttling by clicking on the following dropdown menu:  
+
+
+Replay a request
+Replaying a request can be useful if you want to see how the front end interacts with the response of a request again or if you need to test your request with different parameters. It can be long and painful to reload the page and reproduce exactly the same actions over and over again. Here are some better ways to replay a request:
+
+ When right-clicking on a request, you can copy the cURL format of your request and paste it in the terminal of your computer to send the request to your back end:
+
+
+
+ When right-clicking on a request, you can copy the request headers and paste them in your favorite API development environment (e.g. Postman):
+
+
+In Postman, click on “Headers tab” > “Bulk Edit” to edit the headers:
+
+Now all you need to do is paste your headers. Don’t forget to comment the path of the request which is not a header:  
+
+
+
+ If you are using “XHR” requests, you can simply right-click on the request you want to replay and click on “Replay XHR: 
+
+
+I hope that I could help you debug your network interactions with this article!
+
+										You liked this article? You'd probably be a good match for our ever-growing tech team at Theodo. Join Us
+
+										
+	WRITTEN BY
+
+	
+		    
+  		
+  			
+  				  			
+  		
+
+  		
+				Jordan Lao
+  			
+  				Developer at Theodo  			
+  		
+    
+			
+
+									"
+"
+										jest-each is a small library that lets you write jest test cases with just one line.
+It was added to Jest in version 23.0.1 and makes editing, adding and reading tests much easier. This article will show you how a jest-each test is written with examples of where we use it on our projects.
+A simple example jest test for a currencyFormatter function looks like this:
+describe('currencyFormatter', () => {
+  test('converts 1.59 to £1.59', () => {
+    const input = 1.59;
+    const expectedResult = ""£1.59""
+    expect(currencyFormatter(input)).toBe(expectedResult)
+  })
+  test('converts 1.599 to £1.60', () => {
+    const input = 1.599;
+    const expectedResult = ""£1.60""
+    expect(currencyFormatter(input)).toBe(expectedResult)
+  })
+})
+
+The currencyFormatter function takes in one number argument, input, and returns a string of the number to 2 decimal places with a £ prefix. Simple.
+But, what if you want to add more test cases? Maybe you want your currencyFormatter to comma separate thousands, or handle non-number inputs in a certain way. With the standard jest tests above, you’d have to add five more lines per test case.
+With jest-each you can add new test cases with just one line:
+describe('currencyFormatter', () => {
+  test.each`
+    input     | expectedResult
+    ${'abc'}  | ${undefined}
+    ${1.59}   | ${'£1.59'}
+    ${1.599}  | ${'£1.60'}
+    ${1599}   | ${'£1,599.00'}
+    // add new test cases here
+  `('converts $input to $expectedResult', ({ input, expectedResult }) => {
+    expect(currencyFormatter(input)).toBe(expectedResult)
+  })
+})
+
+There are 4 parts to writing a jest-each test:
+
+The first line in the template string:
+
+test.each`
+  input | expectedResult
+...
+`
+
+This defines the variable names for your test, in this case input and expectedResult. Each variable must be seperated by a pipe | character, and you can have as many as you want.
+
+The test cases:
+
+`...
+  ${'abc'}  | ${undefined}
+  ${1.59}   | ${'£1.59'}
+  ${1.599}  | ${'£1.60'}
+  ${1599}   | ${'£1,599.00'}
+  // add new test cases here
+`
+...
+
+Each line after the first represents a new test. The variable values are set to the relevant variable names in the first row and they are also seperated by a pipe | character.
+
+Print message string replacement:
+
+('$input converts to $expectedResult', ...)
+
+You can customise the print message to include variable values by prefixing your variable names with the dollar symbol $. This makes it really easy to identify which test case is failing when you run your tests. For example, the print messages for the example test above looks like this:
+
+
+Passing the variables into the test:
+
+('$input converts to $expectedResult', ({ input, expectedResult }) => {
+  expect(someFunction(input)).toBe(expectedResult)
+})
+
+An object of variables is passed to the test as the first argument of the anonymous function where you define your test assertions. I prefer to deconstruct the object in the argument.
+jest-each with Older Versions of Jest
+You can still use jest-each with older versions of Jest by installing it independently:
+npm install jest-each
+
+There are a just two things that you’ll need to do differently in your test files:
+
+Import jest-each at the top of your test file
+Use each``.test instead of test.each``
+
+The currencyFormatter test above would look like this instead:
+import each from 'jest-each'
+
+ describe('currencyFormatter', () = {
+   each`
+     input     | expectedResult
+     ${1.59}   | ${'£1.59'}
+     ${1.599}  | ${'£1.60'}
+     // add new test cases here
+   `.test('converts $input to $expectedResult', ({ input, expectedResult }) => {
+    expect(currencyFormatter(input)).toBe(expectedResult)
+  })
+})
+
+And that’s all there is to it! Now you have enough to start writing tests with jest-each!
+jest-each Tests
+Service Test Example
+jest-each makes testing services, like a currencyFormatter, very quick and easy. It’s also amazing for test driven development if that’s how you like to develop. We have found it has been really useful for documenting how a service is expected to work for new developers joining a project because of how easy the test cases are to read.
+For example:
+import currencyFormatter from 'utils/currencyFormatter'
+
+describe('currencyFormatter', () => {
+  test.each`
+    input    | configObject | expectedResult | configDescription
+    ${'abc'} | ${undefined} | ${undefined}   | ${'none'}
+    ${5.1}   | ${undefined} | ${'£5.10'}     | ${'none'}
+    ${5.189} | ${undefined} | ${'£5.19'}     | ${'none'}
+    ${5}     | ${{dec: 0}}  | ${'£5'}        | ${'dec: 0'}
+    ${5.01}  | ${{dec: 0}}  | ${'£5'}        | ${'dec: 0'}
+    // add new test cases here
+  `('converts $input to $expectedResult with config: $configDescription',
+    ({ input, configObject, expectedResult} ) => {
+      expect(currencyFormatter(input, configObject)).toBe(expectedResult)
+    }
+  )
+})
+
+Here we have a slightly more complicated currencyFormatter function that takes an extra configObject argument. We want to test that:
+
+it returns undefined when input is not a number
+the default number of decimal places is 2
+that the configObject can set the number of decimal places with the dec key
+
+We want to be able to identify the tests when they are running so we have also added a configDescription variable so we can add some text to the test’s print message.
+Higher Order Component Test Example
+We like to use jest-each to test and document the properties added to components by higher order components (HOCs). I’ve found this simple test particularly helpful when refactoring our large codebase of HOCs, where it has prevented bugs on multiple occasions. We have even added a project snippet so that setting up this test for new HOCs is even easier:
+import { shallow } from 'enzyme'
+import HomePage from '/pages'
+import isLoading from '/hocs'
+
+const TestComponent = isLoading(HomePage)
+
+describe('wrapper', () => {
+  const component = shallow(<TestComponent/>)
+  test.each`
+    propName
+    ${'isLoading'}
+    // add new test cases here
+  `('wrapper adds $propName to the component', ({ propName }) => {
+    expect(Object.keys(component.props()).toContainEqual(propName)
+  })
+
+  test.each`
+    propName
+    ${'notThisProp'}
+    ${'orThisOne'}
+    // add new test cases here
+  `('wrapper does not add $propName to the component',
+    ({ propName }) => {
+      expect(Object.keys(component.props()).not.toContainEqual(propName)
+    }
+  )
+})
+
+Snapshot Branches Test Example
+You can also test multiple snaphsot branches succintly by using jest-each:
+import Button from '/components'
+
+describe('Component', () => {
+  const baseProps = {
+    disabled: false,
+    size: 'small',
+  }
+  test.each`
+    changedProps        | testText
+    ${{}}               | ${'base props'}
+    ${{disabled: true}} | ${'disabled = true'}
+    ${{size: 'large'}}  | ${'size = large'}
+    // add new test cases here
+  `('snapshot: $testText', ({ changedProps }) => {
+    const component = shallow(<Button {...baseProps} {...changedProps} />)
+    expect(component).toMatchSnaphot()
+  })
+})
+
+You can learn more about snapshot tests here.
+These three types of tests, plus some Cypress integration and end-to-end tests is enough for our current application… but that discussion is for another post.
+Happy testing with jest-each!
+
+										You liked this article? You'd probably be a good match for our ever-growing tech team at Theodo. Join Us
+										
+	WRITTEN BY
+
+	
+		    
+  		
+  			
+  				  			
+  		
+
+  		
+				Mike Riddelsdell
+  			
+  				Developer at Theodo  			
+  		
+    
+			
+
+									"
+"
+										For one of Theodo’s clients, we built a complex website including a catalog, account management and the availability to order products.
+As a result, the project was complex, with several languages (symfony, vue, javascript), utilities (docker, aws, webpack) and microservices (for the search of products, the management of accounts, the orders).
+The impact of this complexity for the development teams was the numerous commands they had to use every day, and particularly to install the project.
+Thus, and following Symfony 4 best practices, we decided to use make on the project to solve these problems.
+And it worked!
+What is make
+Make is a build automation tool created in 1976, designed to solve dependency problems of the build process.
+It was originally used to get compiled files from source code, for instance for C language.
+In website development, an equivalent could be the installation of a project and its dependencies from the source code.
+Let me introduce a few concepts about make that we will need after.
+Make reads a descriptive file called Makefile, to build a target, executing some commands, and depending on a prerequisite.
+The architecture of the Makefile is the following:
+
+target: [prerequisite]
+    command1
+    [command2]
+
+And you run make target in your terminal to execute the target commands. Simple, right?
+Use it for project installation
+What is mainly used to help project installation is a README describing the several commands you need to run to get your project installed.
+What if all these commands were executed by running make install?
+You would have your project working with one command, and no documentation to maintain anymore.
+I will only describe a simple way to build dependencies from your composer.json file
+
+vendor: composer.json
+    composer install
+
+This snippet will build the vendor directory, running composer install, only if the vendor directory does not exist. Or if composer.json file has changed since the last time you built the vendor directory.
+Note that if you don’t want to check the existency of a directory or a file named as your target, you can use a Phony Target. It means adding the line .PHONY: target to your Makefile.
+There is much more you can do, and I won’t talk about it here.
+But if you want a nice example to convert an installation README into a Makefile, you can have a look at these slides, that are coming from a talk at Paris Symfony Live 2018.
+Use it for the commonly used commands you need on your project
+After the project installation, a complexity for the developer is to find the commands needed to develop features locally.
+We decided to create a Makefile to gather all the useful commands we use in the project on a daily basis.
+What are the advantages of this:
+
+The commands are committed and versioned
+All developers of the team are using the same, reviewed commands. -> there is no risk to forget one thing before executing a command line and break something
+It is language agnostic -> which means you can start php jobs, javascript builds, docker commands, …
+It’s well integrated with the OS -> for instance there is autocompletion for targets and even for options
+You can use it for continuous improvement -> when a command fails for one dev, modify that command and commit the new version. It will never fail anymore!
+
+Auto-generate a help target
+But after a long time, we started having a lot of commands.
+It was painful to find the one you wanted in the file, and even to know the one that existed
+So we added a new target help, in order to automatically generate a list of available commands from the comments in the Makefile.
+The initial snippet we used is:
+
+.DEFAULT_GOAL := help
+help:
+    @grep -E '(^[a-zA-Z_-]+:.*?##.*$$)|(^##)' $(MAKEFILE_LIST) | awk 'BEGIN {FS = "":.*?## ""}{printf ""\033[32m%-30s\033[0m %s\n"", $$1, $$2}' | sed -e 's/\[32m##/[33m/'
+
+If you add the following target and comments in your Makefile:
+
+## Example section
+example_target: ## Description for example target
+        @does something
+
+It would give this help message:
+
+This generic, reusable snippet has another advantage: the documentation it generates is always up to date!
+And you can customize it to your need, for instance to display options associated to your commands.
+
+										You liked this article? You'd probably be a good match for our ever-growing tech team at Theodo. Join Us
+
+										
+	WRITTEN BY
+
+	
+		    
+  		
+  			
+  				  			
+  		
+
+  		
+				Martin Guillier
+  			
+  				  			
+  		
+    
+			
+
+									"
+"
+										Usually, we are completely running React.js on client-side: Javascript is interpreted by your browser. The initial html returned by the server contains a placeholder, e.g. <div id=""root""></div>, and then, once all your scripts are loaded, the entire UI is rendered in the browser. We call it client-side rendering.
+The problem is that, in the meantime, your visitor sees… nothing, a blank page!
+Looking for how to get rid of this crappy blank page for a personal project, I discovered Next.js: in my opinion the current best framework for making server-side rendering and production ready React applications.
+Why SSR (Server-Side Rendering)?
+This is not the point of this article, but here is a quick sum-up of what server-side rendering can bring to your application:
+
+Improve your SEO
+Speed up your first page load
+Avoid blank page flicker before rendering
+
+If you want to know more about it, please read this great article: Benefits of Server-Side Over Client Side Rendering.
+But let’s focus on the “how” rather than the “why” here.
+What’s the plan?
+For this article, I start with a basic app made with create-react-app. Your own React application is probably using similar settings.
+This article is split in 3 sections matching 3 server-side-rendering strategies:
+
+How tomanually upgrade your React app to get SSR
+How to start with Next.js from scratch
+Migrate your existing React app to server-side with Next.js
+
+I won’t go through all the steps, but I will bring your attention on the main points of interesting. I also provide a repository for each of the 3 strategies. As the article is a bit long, I’ve split it in 2 articles, this one will only deal with the first 2 sections. If your main concern is to migrate your app to Next.js, you can go directly to the second article (coming soon).
+1) Look how twisted manual SSR is…
+
+In this part, we will see how to implement Server-side Rendering manually on an existing React app. Let’s take the create-react-app starter code:
+
+package.json for dependencies
+Webpack configuration included
+App.js – loads React and renders the Hello component
+index.js – puts all together into a root component
+
+Checking rendering type
+I just added to the code base a simple function isClientOrServer based on the availability of the Javascript object window representing the browser’s window:
+const isClientOrServer = () => {
+  return (typeof window !== 'undefined' && window.document) ? 'client' : 'server';
+};
+
+so that we display on the page what is rendering the application: server or client.
+Test it by yourself
+
+clone this repository
+checkout the initial commit
+install the dependencies with yarn
+launch the dev server with yarn start
+browse to http://localhost:3000 to view the app
+
+I am now simulating a ‘3G network’ in Chrome so that we really understand what is going on:
+
+Implementing Server-side Rendering
+Let’s fix that crappy flickering with server-side rendering! I won’t show all the code (check the repo to see it in details) but here are the main steps.
+We first need a node server using Express: yarn add express.
+In our React app, Webpack only loads the src/ folder, we can thus create a new folder named server/ next to it. Inside, create a file index.js where we use express and a server renderer.
+// use port 3001 because 3000 is used to serve our React app build
+const PORT = 3001; const path = require('path');
+
+// initialize the application and create the routes
+const app = express();
+const router = express.Router();
+
+// root (/) should always serve our server rendered page
+router.use('^/$', serverRenderer);
+
+To render our html, we use a server renderer that is replacing the root component with the built html:
+// index.html file created by create-react-app build tool
+const filePath = path.resolve(__dirname, '..', '..', 'build', 'index.html');
+
+fs.readFile(filePath, 'utf8', (err, htmlData) => {
+  // render the app as a string
+  const html = ReactDOMServer.renderToString(<App />);
+
+  // inject the rendered app into our html
+  return res.send(
+    htmlData.replace(
+      '<div id=""root""></div>',
+      `<div id=""root"">${html}</div>`
+    )
+  );
+}
+
+This is possible thanks to ReactDOMServer.renderToString which fully renders the HTML markup of a page to a string.
+We finally need an entry point that will tell Node how to interpret our React JSX code. We achieve this with Babel.
+require('babel-register')({
+  ignore: [ /(node_modules)/ ],
+  presets: ['es2015', 'react-app']
+});
+
+Test it by yourself
+
+checkout last changes on master branch
+install the dependencies with yarn
+build the application with yarn build
+declare babel environment in your terminal: export BABEL_ENV=development
+launch your node server with node server/bootstrap.js
+browse to http://localhost:3001 to view the app
+
+Still simulating the ‘3G network’ in Chrome, here is the result:
+
+Do not be mistaken, the page is rendered by server. But as soon as the javascript is fully loaded, window.document is available and the isClientOrServer() function returns client.
+We proved that we can do Server-side Rendering, but what’s going on with that React logo?!
+We’re missing many features
+Our example is a good proof of concept but very limited. We would like to see more features like:
+
+import images in js files (logo problem)
+several routes usage or route management (check this article)
+deal with the </head> and the metatags (for SEO improvements)
+code splitting (here is an article solving the problem)
+manage the state of our app or use Redux (check this great article
+
+and performance is bad on large pages: ReactDOMServer.renderToString() is a synchronous CPU bound call and can starve out incoming requests to the server. Walmart worked on an optimization for their e-commerce website.
+It is possible to make Server-side Rendering work perfectly on top of create-react-app, we won’t go through all the painful work in this article. Still, if you’re interested in it, I attached just above some great articles giving detailed explanations.
+Seriously… Next.js can bring you all these features!
+2) Next.js helps you building server rendered React.js Application
+
+What is Next.js?
+Next.js is a minimalistic framework for server-rendered React applications with:
+
+a very simple page based routing
+Webpack hot reloading
+automatic transpilation (with babel)
+deployment facilities
+automatic code splitting (loads page faster)
+built in css support
+ability to run server-side actions
+simple integration with Redux using next-redux-wrapper.
+
+Get started in 1 minute
+In this short example, we are going to see how crazy simple it is to have a server-side rendering app ready with Next.js.
+First, generate your package.json with npm init and install Next.js with npm install --save next react react-dom. Then, add a script to your package.json like this:
+""scripts"": {
+  ""dev"": ""next"",
+  ""build"": ""next build"",
+  ""start"": ""next start""
+}
+
+Create a pages/ folder. Every .js file becomes a route that gets automatically processed and rendered. Add a index.js file in that pages/ folder (with the execution of our isClientOrServer function):
+const Index = ({ title = 'Hello from Next.js' }) => (
+  <div>
+    <h1>{title}</h1>
+    <p className=""App-intro"">
+      Is my application rendered by server or client?
+    </p>
+    <h2><code>{isClientOrServer()}</code></h2>
+  </div>
+);
+
+export default Index;
+
+No need to import any library at the top of our index.js file, Next.js already knows that we are using React.
+Now enter npm run dev into your terminal and go to http://localhost:3000: Tadaaaaa!
+
+Repeat the same operation inside your pages/ folder to create a new page. The url to access it will directly match the name you give to the file.
+You’re ready to go! You’re already doing SSR. Check the documentation on Next.js official repository.
+Use create-next-app
+You want to start a server-side rendered React app, you can now stop using create-react-app, and start using create-next-app:
+npm install -g create-next-app
+
+create-next-app my-app
+cd my-app/
+npm run dev
+
+This is all you need to do to create a React app with server-side rendering thanks to Next.js.
+Finally, better than a simple Hello World app, check this Hacker News clone implementing Next.js. It is fully server-rendered, queries the data over Firebase and updates in realtime as new votes come in.
+Vue.js and Nuxt
+You’re maybe a Vue.js developer. Just after Next.js first release, two french brothers made the same for Vue.js: Nuxt was born! Like Vue, the Nuxt documentation is very clear and you can use the same starter template vue-cli for you app:
+ vue init nuxt-community/starter-template <project-name> 
+What’s Next? 
+Hope you liked this article which was mainly written in order to introduce server-side rendering with Next.
+If you are interested in server-side rendering for your existing React application, in the following, I am going to demonstrate how to migrate your existing create-react-app to Next.js. Coming soon…
+
+										You liked this article? You'd probably be a good match for our ever-growing tech team at Theodo. Join Us
+
+										
+	WRITTEN BY
+
+	
+		    
+  		
+  			
+  				  			
+  		
+
+  		
+				Baptiste Jan
+  			
+  				Web Developer @Theodo. I like Vue.js and all the ecosystem growing around.  			
+  		
+    
+			
+
+									"
+"
+										Why?
+Adding upload fields in Symfony application eases the way of managing assets. It makes it possible to upload public assets as well as sensitive documents instantly without any devops knowledge. Hence, I’ll show you a way of implementing a Symfony / Amazon AWS architecture to store your documents in the cloud.
+Setup Symfony and AWS
+First you need to setup both Symfony and AWS to start storing some files from Symfony in AWS buckets.
+Amazon AWS
+Creating a bucket on Amazon AWS is really straight forward. First you need to sign up on Amazon S3 (http://aws.amazon.com/s3). Go to the AWS console and search S3. Then click on Create a bucket.
+Follow bucket creation process choosing default values (unless you purposely want to give public access to your documents, you should keep your bucket private). Eventually create a directory for each of your environments. Your AWS S3 bucket is now ready to store your documents.
+Symfony
+Now you need to setup Symfony to be able to store files and to communicate with Amazon AWS. You will need 2 bundles and 1 SDK to set it up:
+
+VichUploader (a bundle that will ease files upload)
+KNP/Gauffrette (a bundle that will provide an abstraction layer to use uploaded files in your Symfony application without requiring to know where those files are actually stored)
+AWS-SDK (A SDK provided by Amazon to communicate with AWS API)
+
+Install the two bundles and the SDK with composer:
+
+composer require vich/uploader-bundle
+composer require aws/aws-sdk-php
+composer require knplabs/knp-gaufrette-bundle
+
+
+Then register the bundles in AppKernel.php
+
+public function registerBundles()
+    {
+     return [
+            	new Vich\UploaderBundle\VichUploaderBundle(),
+            	new Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
+            ];
+    }
+
+
+Bucket parameters
+It is highly recommended to use environment variables to store your buckets parameters and credentials. It will make it possible to use different buckets depending on your environment and will prevent credentials from being stored in version control system. Hence, you won’t pollute your production buckets with test files generated in development environment.
+You will need to define four parameters to get access to your AWS bucket:
+
+AWS_BUCKET_NAME
+AWS_BASE_URL
+AWS_KEY (only for and private buckets)
+AWS_SECRET_KEY (only for and private buckets)
+
+You can find the values of these parameters in your AWS console.
+Configuration
+You will have to define a service extending Amazon AWS client and using your AWS credentials.
+Add this service in services.yml:
+
+ct_file_store.s3:
+        class: Aws\S3\S3Client
+        factory: [Aws\S3\S3Client, 'factory']
+        arguments:
+            -
+                version: YOUR_AWS_S3_VERSION (to be found in AWS console depending on your bucket region and version)
+                region: YOUR_AWS_S3_REGION
+                credentials:
+                    key: '%env(AWS_KEY)%'
+                    secret: '%env(AWS_SECRET_KEY)%'
+
+
+Now you need to configure VichUploader and KNP_Gaufrette in Symfony/app/config/config.yml. Use the parameters previously stored in your environment variables.
+Here is a basic example:
+
+knp_gaufrette:
+    stream_wrapper: ~
+    adapters:
+        document_adapter:
+            aws_s3:
+                service_id: ct_file_store.s3
+                bucket_name: '%env(AWS_BUCKET_NAME)%'
+                detect_content_type: true
+                options:
+                    create: true
+                    directory: document
+    filesystems:
+        document_fs:
+            adapter:    document_adapter
+
+vich_uploader:
+    db_driver: orm
+    storage: gaufrette
+    mappings:
+        document:
+            inject_on_load: true
+            uri_prefix: ""%env(AWS_BASE_URL)%/%env(AWS_BUCKET_NAME)%/document""
+            upload_destination: document_fs
+            delete_on_update:   false
+            delete_on_remove:   false 
+
+
+Upload files
+First step in our workflow is to upload a file from Symfony to AWS. You should create an entity to store your uploaded document (getters and setters are omitted for clarity, you will need to generate them).
+The attribute mapping in $documentFile property annotation corresponds to the mapping defined in config.yml. Don’t forget the class attribute @Vich\Uploadable().
+
+namespace MyBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
+/**
+ * Class Document
+ *
+ * @ORM\Table(name=""document"")
+ * @ORM\Entity()
+ * @Vich\Uploadable()
+ */
+class Document
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(type=""integer"", name=""id"")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy=""AUTO"")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type=""string"", length=255, nullable=true)
+     */
+    private $documentFileName;
+
+    /**
+     * @var File
+     * @Vich\UploadableField(mapping=""document"", fileNameProperty=""documentFileName"")
+     */
+    private $documentFile;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type=""datetime"")
+     */
+    private $updatedAt;
+}
+
+
+Then you can add an uploaded document to any of your entities:
+
+     /**
+     * @var Document
+     *
+     * @ORM\OneToOne(
+     *     targetEntity=""\MyBundle\Entity\Document"",
+     *     orphanRemoval=true,
+     *     cascade={""persist"", ""remove""},
+     * )
+     * @ORM\JoinColumn(name=""document_file_id"", referencedColumnName=""id"", onDelete=""SET NULL"")
+     */
+    private $myDocument;
+
+
+Create a form type to be able to upload a document:
+
+class UploadDocumentType extends AbstractType
+{
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        add('myDocument', VichFileType::class, [
+                'label'         => false,
+                'required'      => false,
+                'allow_delete'  => false,
+                'download_link' => true,
+            ]);
+    }
+...
+}
+
+
+Use this form type in your controller and pass the form to the twig:
+
+...
+$myEntity = new MyEntity();
+$form = $this->createForm(UploadDocumentType::class, $myEntity);
+...
+return [ 'form' => $form->createView()];
+
+
+Finally, add this form field in your twig and you should see an upload field in your form:
+
+<div class=""row"">
+    <div class=""col-xs-4"">
+        {{ form_label(form.myDocument) }}
+    </div>
+    <div class=""col-xs-8"">
+        {{ form_widget(form.myDocument) }}
+    </div>
+    <div class=""col-xs-8 col-xs-offset-4"">
+        {{ form_errors(form.myDocument) }}
+    </div>
+</div>
+
+
+Navigate to your page, upload a file and submit your form. You should now be able to see this document in your AWS bucket.
+Users are now able to upload files on your Symfony application and these documents are safely stored on Amazon AWS S3 bucket. The next step is to provide a way to download and display these documents from AWS in your Symfony application.
+Display or download documents stored in private buckets
+In most cases, your files are stored in private buckets. Here is a step by step way to safely give access to these documents to your users.
+Get your document from private bucket
+You will need a method to retrieve your files from your private bucket and display it on a custom route. As a result, users will never see the actual route used to download the file. You should define this method in a separate service and use it in the controller.
+s3Client is the service (ct_file_store.s3) we defined previously extending AWS S3 client with credentials for private bucket. You will need to inject your bucket name from your environment variables in this service. my-documents/ is the folder you created to store your documents.
+
+     /**
+     * @param string $documentName
+     *
+     * @return \Aws\Result|bool
+     */
+    public function getDocumentFromPrivateBucket($documentName)
+    {
+        try {
+            return $this->s3Client->getObject(
+                [
+                    'Bucket' => $this->privateBucketName,
+                    'Key'    => 'my-documents/'.$documentName,
+                ]
+            );
+        } catch (S3Exception $e) {
+            // Handle your exception here
+        }
+    }
+
+
+Define an action with a custom route:
+You will need to use the method previously defined to download the file from AWS and expose it on a custom route.
+
+     /**
+     * @param Document $document
+     * @Route(""/{id}/download-document"", name=""download_document"")
+     * @return RedirectResponse|Response
+     */
+    public function downloadDocumentAction(Document $document)
+    {
+        $awsS3Uploader  = $this->get('app.service.s3_uploader');
+
+        $result = $awsS3Uploader->getDocumentOnPrivateBucket($document->getDocumentFileName());
+
+        if ($result) {
+            // Display the object in the browser
+            header(""Content-Type: {$result['ContentType']}"");
+            echo $result['Body'];
+
+            return new Response();
+        }
+
+        return new Response('', 404);
+    }
+
+
+Download document
+Eventually add a download button to access a document stored in a private bucket directly in your Symfony application.
+
+<a href=""{{ path('/download-document', {'id': document.id}) }}"" 
+                   target=""_blank"">
+   <i class=""fa fa-print"">
+   {{ 'label_document_download'|trans }}
+</a>
+
+
+Public assets
+You may want to display some assets from Amazon AWS in public pages of your application. To do so, use a public bucket to upload these assets. It is quite straight forward to access it to display them. Be conscious that anyone will be able to access these files outside your application.
+
+<img src=""{{ vich_uploader_asset(myEntity.myDocument, 'documentFile') }}"" alt="""" />
+
+
+
+										You liked this article? You'd probably be a good match for our ever-growing tech team at Theodo. Join Us
+
+										
+	WRITTEN BY
+
+	
+		    
+  		
+  			
+  				  			
+  		
+
+  		
+				Alan Rauzier
+  			
+  				Developer at Theodo  			
+  		
+    
+			
+
+									"
+"
+										tl:dr
+To add a pre-commit git hook with Husky:
+
+Install Husky with npm install husky --save-dev
+Set the pre-commit command in your package.json:
+
+""scripts"": {
+    ""precommit"": ""npm test""
+},
+
+What are git hooks?
+Git hooks are scripts launched when carrying out some git actions. The most common one is the pre-commit hook that runs when performing git commit, before the commit is actually created.
+The scripts are located in the .git/hooks folder. Check out the .sample file examples in your local git repository.
+
+Why do I need to install the Husky package then?
+The problem with git hooks is that they are in the .git directory, which means that they are not committed hence not shared between developers.
+Husky takes care of this: when a developer runs npm install, it will automatically create the scripts in .git/hooks:
+
+Theses scripts will parse your package.json and run the associated command. For example, the pre-commit script will run the npm run precommit command
+""scripts"": {
+    ""precommit"": ""npm test""
+},
+
+To add husky to your project, simply run npm install husky --save-dev.
+For more complex commands, I recommend to use a separate bash script : ""precommit"": ""bash ./scripts/check-lint.sh"".
+Enhancing your git flow
+Git hooks are a convenient way to automate tasks during your git flow and protect you from pushing unwanted code by mistake.
+
+Check for linting errors
+
+If you have tools to check the code quality or formatting, you can run it on a pre-commit hook:
+""scripts"": {
+    ""precommit"": ""prettier-check \""**/*.js\"" && eslint . --quiet""
+},
+
+I advise to run those tests on your CI tool as well, but checking it on a precommit hook can make you save a lot of time as you won’t have to wait for your CI to set up your whole project and fail only because you forgot a semicolon.
+
+Protect important branches
+
+In some rare situations, you have to push code directly on a branch that is deployed. One way to protect it from developers in a hurry who forget to run the tests locally is to launch them on a pre-push hook:
+""scripts"": {
+    ""prepush"": ""./scripts/pre-push-check.sh""
+},
+
+
+#!/bin/bash
+set -e
+
+branch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
+if [ ""$branch"" == ""master"" ]
+then
+    npm test
+fi
+
+
+If your tests fail, the code won’t be pushed.
+
+										You liked this article? You'd probably be a good match for our ever-growing tech team at Theodo. Join Us
+
+										
+	WRITTEN BY
+
+	
+		    
+  		
+  			
+  				  			
+  		
+
+  		
+				Hugo Lime
+  			
+  				Agile Web Developer at Theodo.
+
+Passionate about new technologies to make web apps stronger and faster.  			
+  		
+    
+			
+
+									"
+"
+										Why
+What is a Virtual DOM ?
+The virtual DOM (VDOM) is a programming concept where an ideal, or “virtual”, representation of a UI is kept in memory.
+Then, it is synced with the “real” DOM by a library such as ReactDOM. This process is called reconciliation.
+Performance and windowing
+You might know that React uses this virtual DOM. Thus, it is only when React renders elements that the user will have them into his/her HTML DOM.
+Sometimes you might want to display a lot of html elements, like for grids, lists, calendars, dropdowns etc and the user will often complain about performance.
+
+Hence, a good way to display a lot of information is to ‘window’ it. The idea is to create only elements the user can see. An example is the Kindle vs Book. While the book is a heavy object because it ‘renders’ all the pages, the Kindle only display what the user can see.
+React-Virtualized
+That is how Brian Vaughn came up with the idea of creating React-Virtualized.
+It is an open-source library which provides you many components in order to window some of your application List, Grid etc
+As a developer, you do not want to reinvent the wheel. React-virtualized is a stable and maintained library. Its community is large and as it is open-source, many modules and extensions are already available in order to window a maximum of elements.
+Furthermore, it offers lots of functionalities and customization that you would not even think about.
+We will discuss about it later, but before, let’s see when to use React-virtualized.
+When
+When thinking about performance, lots of actions can be taken, but React official website already got a complete article to be read. In consequence, if you face a performance problem, be sure you have already done all of these before to start to window your application (but stay pragmatic).
+How
+Getting into it
+Ok, now that you’re convinced, let’s go throught the real part.
+
+You can begin by following instructions for installing the right package via npm and look at simple examples here : React virtualized github. However, I’m going to show you a complex example so you can use React-Virtualized in an advanced way.
+React-Virtualized 101
+To render a windowed list, no need for digging one hour a complex documentation, React-Virtualized is very simple to use.
+Firstly, you use the List component from the library, then, the few important props are the next one:
+
+width: the width of the List
+height: the height of the List
+rowCount: the number of elements you will display
+rowHeight: the height of each row you will display
+rowRenderer: a callback method to define yourself depending on what you want to do with your data. This method is the core of your list, it is here that you define what will be rendered thanks to your data.
+
+The example
+
+import React from 'react';
+import { List } from 'react-virtualized';
+
+// List data as an array of strings
+const list = [
+ 'Easy windowing1',
+ 'Easy windowing2',
+ // And so on...
+];
+
+function rowRenderer({
+ key, // Unique key within array of rows
+ index, // Index of row within collection
+ isScrolling, // Used for performance
+ isVisible, // Used for performancee
+ style, // Style object to be applied to row (to position it)
+}) {
+ return (
+
+<div key={key} style={style}>
+   {list[index]}
+ </div>
+
+ );
+}
+
+// Render your list
+const ListExample = () => (
+ <List width={300} height={300} rowCount={list.length} rowHeight={20} rowRenderer={rowRenderer} />
+);
+
+Click here to see a demo
+A more complex virtualized list:
+Display a virtualized list might be easy, but you might have a complicated behaviour to implement.
+
+In this advanced example, we will:
+
+Use the AutoSizer HOC to automatically calculate the size the List will fill
+Be able to display row with a dynamic height using the CellMeasurer
+Be able to use the CellMeasurer even if the data are not static
+
+This advanced example goes through 4 steps:
+
+Instantiate the AutoSizer and List component
+See how the CellMeasurer and the CellMeasurerCache work
+Learn how we use them in the rowRenderer
+Go further with using these on a list that does not contain a stable number of elements
+
+The example
+Let’s look first at how we render the list:
+ 
+
+import {
+ AutoSizer,
+ List,
+ CellMeasurer,
+ CellMeasurerCache,
+} from 'react-virtualized';
+...
+<AutoSizer>
+ {({ height, width }) => (
+  <List
+    width={width}
+    height={height}
+    rowGetter={({ index }) => rows[index]}
+    rowCount={1000}
+    rowHeight={40}
+    rowRenderer={this.rowRenderer}
+    headerHeight={20}
+  />
+ )}
+</AutoSizer>
+
+It is very simple:
+
+We wrap the list with the AutoSizer HOC
+It uses the CellMeasurerCache to know the height of each row and the rowRenderer to render the elements.
+
+How it works :
+First, you instantiate a new CellMeasurerCache that will contain all the calculated heights :
+
+constructor(props) {
+ super(props);
+ this.cache = new CellMeasurerCache({ //Define a CellMeasurerCache --> Put the height and width you think are the best
+ defaultHeight: 80,
+ minHeight: 50,
+ fixedWidth: true,
+ });
+}
+
+Then, you use the CellMeasurer in the rowRenderer method:
+
+rowRenderer = ({
+   key, // Unique key within array of rows
+   index, // Index of row within collection
+   parent,
+   isScrolling, // The List is currently being scrolled --> Important if you need some perf adjustment
+   isVisible, // This row is visible within the List (eg it is not an overscanned row)
+   style, // Style object to be applied to row (to position it)
+}) => (
+   <CellMeasurer
+     cache={this.cache}
+     columnIndex={0}
+     key={key}
+     parent={parent}
+     rowIndex={index}
+   >
+   <div
+     className=""Row""
+     key={key}
+     style={{
+       ...style,
+       display: 'flex',
+     }}
+   >
+     <span style={{ width: 400 }}>{rows[index].name}</span>
+     <span style={{ width: 100 }}>{rows[index].age}</span>
+   </div>
+   </CellMeasurer>
+);
+
+ 
+Pitfall:
+Finally, we obtain a nice windowed list, ready to be deployed and used…
+Unless your application contain filters or some data added dynamically.
+Actually, when I implemented this, after using some filters, some blank spaces were staying in the list.
+It is a performance consideration due to the fact we use a cache, but it is a good compromise unless you have many rows and many columns in a Grid (as we display a list, we only have 1 column).
+Consequently, I managed to fix this issue by clearing the cache every time my list had its data reloaded:
+
+componentWillReceiveProps() { //Really important !!
+ this.cache.clearAll(); //Clear the cache if row heights are recompute to be sure there are no ""blank spaces"" (some row are erased)
+ this.virtualizedList && this.virtualizedList.recomputeRowHeights(); //We need to recompute the heights
+}
+
+A big thanks to Brian Vaughn for this amazing library
+
+										You liked this article? You'd probably be a good match for our ever-growing tech team at Theodo. Join Us
+
+										
+	WRITTEN BY
+
+	
+		    
+  		
+  			
+  				  			
+  		
+
+  		
+				Cyril Gaunet
+  			
+  				Developer at Theodo  			
+  		
+    
+			
+
+									"
+"
+										At some point during the development of your React Native application, you will use a Modal. A Modal is a component that appears on top of everything.
+There are a lot of cool libraries out there for modals, so today, we’ll have a look a the best libraries for different use cases.
+Click on “Tap to play” on the playground below to start:
+
+
+You can experience the app on your phone here and check the code on github.
+Before choosing a library, you have to answer those 2 questions:
+
+What do I want to display in the modal ?
+How great do I want the UX to be ?
+
+To answer the 2nd question, we list a few criteria that make a good UX :
+1️⃣ The user can click on a button to close the modal
+2️⃣ The user can touch the background to close the modal
+3️⃣ The user can swipe the modal to close it
+4️⃣ The user can scroll inside the modal
+I) Alert
+First, if you simply want to display some information and perform an action based on the decision of your user, you should probably go with a native Alert. An alert is enough and provides a much simpler and more expected UX. You can see how it will look like below.
+
+II) Native modal
+If you want to show more information to your user, like a picture or a customised button, you need a Modal. The simplest modal is the React Native modal. It gives you the bare properties to show and close the modal 1️⃣, so it is really easy to use ✅. The downside is that it requires some effort to customise so as to improve the user experience ❌.
+
+import { Modal } from ""react-native"";
+...
+        <Modal
+          animationType=""slide""
+          transparent={true}
+          visible={this.state.modalVisible}
+          onRequestClose={this.closeModal} // Used to handle the Android Back Button
+        >
+
+III) Swipeable Modal
+If you want to improve the UX, you can allow the user to swipe the modal away. For example, if the modal comes from the top like a notification, it feels natural to close it by pulling it up ⬆️. If it comes from the bottom, the user will be surprised if they cannot swipe it down ⬇️. It’s even better to highlight the fact that they can swipe the modal with a little bar with some borderRadius. The best library for that use case would be the react-native-modal library. It is widely customisable and answers to criteria 1️⃣, 2️⃣ and 3️⃣.
+
+import Modal from ""react-native-modal"";
+...
+        <Modal
+          isVisible={this.state.visible}
+          backdropOpacity={0.1}
+          swipeDirection=""left""
+          onSwipe={this.closeModal}
+          onBackdropPress={this.closeModal}
+        >
+
+IV) Scrollable modal
+So far so good, now let’s see some more complex use cases. For instance, you may want the content of the modal to be scrollable (if you are displaying a lot of content or a Flatlist). The scroll may conflict with either the scroll of the modal or the scroll of the container of the Modal, if it is a scrollable component. For this use case, you can still use the react-native-modal library. You will have 1️⃣, 2️⃣ and 4️⃣. You can control the direction of the swipe with… swipeDirection.
+
+import Modal from ""react-native-modal"";
+...
+        <Modal
+          isVisible={this.state.visible}
+          backdropOpacity={0.1}
+          onSwipe={this.closeModal}
+          // swipeDirection={""left""} <-- We can't specify swipeDirection since we want to scroll inside the modal
+          onBackdropPress={this.closeModal}
+        >
+
+⚠️ Don’t try to combine swipeable + scrollable with this library. Instead continue reading…
+V) Swipeable + Scrollable modal
+The previous libraries are already awesome, but if you want your modal to answer criteria 1️⃣, 2️⃣, 3️⃣and 4️⃣, you need react-native-modalbox. This library is still very easy to use ✅and has everything out of the box ✅, and is listed in the awesome libraries by awesome-react-native. The only downside is that the modal from this library always appear from the bottom, and you can only swipe it down ❌.
+
+import Modal from ""react-native-modalbox"";
+...
+        <Modal
+          style={styles.container}
+          swipeToClose={true}
+          swipeArea={20} // The height in pixels of the swipeable area, window height by default
+          swipeThreshold={50} // The threshold to reach in pixels to close the modal
+          isOpen={this.state.isOpen}
+          onClosed={this.closeModal}
+          backdropOpacity={0.1}
+        >
+
+To avoid the collision between the scroll of your content and the swipe to close the modal, you have to specify swipeArea and swipeThreshold.
+Conclusion
+There are a lot of libraries built on top of the native modal. It is important to choose the right one depending on your needs. If you want to control the direction of the swipe, use react-native-modal, but if you want the modal to only come from the bottom, use react-native-modalbox.
+The libraries I’ve talked about are amazing. Thanks to their contributors.
+
+Please reach out if you think I missed something.
+
+										You liked this article? You'd probably be a good match for our ever-growing tech team at Theodo. Join Us
+										
+	WRITTEN BY
+
+	
+		    
+  		
+  			
+  				  			
+  		
+
+  		
+				Antoine Garcia
+  			
+  				  			
+  		
+    
+			
+
+									"
+"
+										A year ago I was a young developer starting his journey on React. My client came to see my team and told us: “We need to make reusable components”, I asked him: “What is a reusable component?” and the answer was “This project is a pilot on the subject”.
+2 months later another developer tried to use our components and the disillusion started: despite our efforts, our component were not reusable 😱
+At the time we managed to work with him to improve our code so that he could use it, but how could we have avoided the problem?
+The answer was given to me by Florian Rival, a former developer at Bam, now working for Facebook: Storybook !
+ Storybook, what is that?
+It is an open source visual documentation software (here is the repo). It allows you to display the different states of your component. The cluster of all the different cases for your component are called the component stories.
+This allows you to visually describe your components : anyone who wants to use your components can just look at your stories and see how to use it. No need to dig in the code to find all the use cases, they are all there!
+A picture is worth a thousand words, so just check the best example I know, the open Storybook of Airbnb.
+One interesting thing to note is that it’s working with Vue, Angular and React!
+Usage example
+Let’s make an example to explain this better to you. I will use a react todo list, I started with the one on this repo.
+Then I added Storybook to the project, I won’t detail this part as the Storybook doc is very good. I would say it takes approximately 20 minutes to add storybook to your project, but might take longer to properly setup your asset builder.
+Now I’ll focus on the component FilteredList that display the todos, first it looked like this:
+
+import React from 'react';
+import styled from 'styled-components';
+import TodoItem from './TodoItem';
+
+const StyledUl = styled.ul`
+  list-style: none;
+`;
+
+const StyledP = styled.p`
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 0;
+  background: #f2f2f2;
+  border: 1px solid rgba(229, 229, 229, 0.5);
+  color: #888;
+`;
+
+export default function FilteredList(props) {
+    const {items, changeStatus} = props;
+
+    if (items.length === 0) {
+        return (
+            <StyledP>There are no items.</StyledP>
+        );
+    }
+
+    return (
+        <StyledUl>
+            {items.map(item => (
+                <TodoItem key={item.id} data={item} changeStatus={changeStatus}/>
+            ))}
+        </StyledUl>
+    );
+}
+
+(It is not exactly the same as the one on the repo, I used styled-component instead of plain css)
+TodoItem is the component that displays an element of the list.
+Here we can see there are two different branches in the render: the nominal case and the empty state.
+Let’s write some stories, I created a file FilteredList.stories.js and added this inside:
+
+import React from 'react';
+import { storiesOf } from '@storybook/react';
+import FilteredList from ""./FilteredList"";
+
+const data = [{
+    id: 1,
+    completed: true,
+    text: 'Jean-Claude Van Damme'
+}];
+
+storiesOf('FilteredList')
+    .add('Nominal usage', () => (
+        <FilteredList items={data} changeMode={() => void 0}/>
+    ))
+    .add('Empty state', () => (
+        <FilteredList items={[]} changeMode={() => void 0}/>
+    ));
+
+So what did I do here?
+I defined placeholder data in a variable for the component props.
+We use the function storiesOf from storybook, this function takes the name we want to give to the group of stories as entry param.
+Then we add some stories with .add. It works pretty much like jest or mocha’s describe or it in tests, it takes the name of the story and a function that returns the component to render.
+Here’s what it looks like:
+
+
+It’s rather simple but it’s working, we see the two different cases.
+What if we add other branches? Let’s say the parent component of FilteredList is calling an API to get the list and so we have to add a loading and error state.
+
+export default function FilteredList(props) {
+    const {items, changeStatus, isLoading, error} = props;
+
+    if (isLoading) {
+        return (
+            <StyledP>Loading...</StyledP>
+        )
+    }
+
+    if (error) {
+        return (
+            <StyledP>Sorry an error occurred with the following message: {error}</StyledP>
+        )
+    }
+    
+    //...
+}
+
+Now we need to add the corresponding stories.
+
+.add('Loading state', () => (
+        <FilteredList items={[]} changeMode={() => void 0} isLoading />
+))
+.add('Error state', () => (
+    <FilteredList items={[]} changeMode={() => void 0} error=""Internal server error""/>
+));
+
+And now our Storybook looks like:
+
+
+This example is rather simple but it shows pretty well how we worked with Storybook. Each time you create new component behaviors you then create the corresponding stories.
+Ain’t nobody got time for that?
+In fact it takes time when you are coding but I feel like it is more like an investment.
+When you develop your app aren’t you trying to make it easy to use? Then why not make it easy for developers to use your code?
+And that’s where Storybook is helping you, now your components are easier to share, this leads to a better collaboration between developers and therefore to better component development practices shared inside the team.
+This is very important because you are not the only user of your code, you might be working with a team or someone else will take over your project afterwards.
+We all had this part in our project code that have been here for ages and no one really know how to deal with it, how to avoid that? Make it good the first time you code it! Seems obvious but still is right, and for that you can use Storybook to share your front end components and make perfect APIs! (or at least very good ones)
+Final thoughts
+In a way we are all trying to do reusable components – whether you are trying to do a library or not, you want other members of your team to be able to update/fix your code. It’s not easy to make perfect APIs for your components if you can not have a lot of user feedback and that’s why Storybook or any visual doc are so efficient. They improve greatly the vision others have of your component and help them modify it without breaking anything.
+
+										You liked this article? You'd probably be a good match for our ever-growing tech team at Theodo. Join Us
+
+										
+	WRITTEN BY
+
+	
+		    
+  		
+  			
+  				  			
+  		
+
+  		
+				Léo Anesi
+  			
+  				Developer at Theodo  			
+  		
+    
+			
+
+									"
+"
+										In this tutorial, you will see how to use ARjs on simple examples in order to discover this technology. You don’t need any huge tech background in order to follow this tutorial.
+1 – Your very first AR example
+First we will start with a simple example that will help us understand all the elements we need to start an ARjs prototype.
+Library import
+As I wished to keep it as simple as possible we will only use html static files and javascript libraries. Two external librairies are enough to start with ARjs.
+First we need A-Frame library, a web-framework for virtual reality. It is based on components that you can use as tag once defined.
+You can import A-Frame library using the folowing line :
+<script src=""https://aframe.io/releases/0.6.1/aframe.min.js""></script>
+
+Then we need to import ARjs, the web-framework for augmented reality we are going to use.
+<script src=""https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.0/aframe/build/aframe-ar.js""></script>
+
+Initialize the scene
+A-Frame works using a scene that contains the elements the user wants to display. To create a new scene, we use the a-scene tag :
+<a-scene stats embedded arjs='trackingMethod: best; debugUIEnabled: false'>
+  <!-- All our components goes here -->
+</a-scene>
+
+Note the 2 elements we have in our a-scene tag :
+
+stats : it displays stats about your application performance. You are free to remove it, but to start it will give us some useful information.
+arjs : Here you can find some basic ARjs configuration. trackingMethod is the type of camera tracking you use, here we have choosen which is an auto configuration that will be great for our example. And debugUIEnabled is set at false in order to remove debugging tools from the camera view.
+
+Shape
+Then we will use our first a-frame component. A-frame is built around a generic component a-entity that you use and edit to have the behaviour you want.
+In this demo, we want to display a cube. Thankfully a components exists in A-frame, already implemented, that can be used to do that :
+<a-box position=""0 0 0"" rotation=""0 0 0""></a-box>
+
+a-box has a lot of attributes on which you can learn more in the official documentation, here we will focus on two attributes :
+
+position : the three coordinates that will be used to position our components
+rotation : that color of the shape
+
+Marker
+We are going to use a Hiro marker to start. It is a special kind of marker designed for augmented reality. We will dig deeper into other markers in one of the following part.
+
+Deployment
+As announced we want to make our application accessible from a mobile device, so we will need to deploy our web page and make it accessible from our smartphone.
+http-server
+There are a lot of node modules that you can use to start a development web server, I choose to use http-server which is very simple and can be used with a single command line.
+First you need to install the module by running the following command
+npm install -g http-server
+
+Then to launch your server, you can do it with the command line :
+http-server
+
+You can use other tools, such as the python based SimpleHTTPServer which is natively available on macOS with the following command:
+python -m SimpleHTTPServer 8000
+
+ngrok
+Now that your server is running, you need to make your webpage accessible for your mobile device. We are going to use ngrok. It is a very simple command line tool that you can download from here : https://ngrok.com/download.
+Then you use ngrok with the following command :
+ngrok http 8080
+
+It will redirect all connections to the address : http://xxxxxx.ngrok.io, directly toward your server and your html page.
+So with our index.html containing the following :
+<!doctype HTML>
+<html>
+<script src=""https://aframe.io/releases/0.6.1/aframe.min.js""></script>
+<script src=""https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js""></script>
+<script src=""https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.0/aframe/build/aframe-ar.js""> </script>
+  <body style='margin : 0px; overflow: hidden;'>
+    <a-scene stats embedded arjs='trackingMethod: best;'>
+      <a-marker preset=""hiro"">
+      <a-box position='0 1 0' material='color: blue;'>
+      </a-box>
+      </a-marker>
+      <a-entity camera></a-entity>
+    </a-scene>
+  </body>
+</html>
+
+Or if you prefer on codepen.
+And the result should look like :
+
+2 – Animation
+Now that we were able to display our first A-frame component, we want to make it move.
+A-frame contains a component a-animation that has been designed to animate an entity. As A-frame uses tag components, the a-animation has to be inside the entity tag that you want to animate :
+  <a-entity>
+    <a-animation></a-animation>
+  </a-entity>
+
+a-animation can be used on various attributes of our entity such as position, rotation, scale or even color.
+We will see in the next part what can be done with these attributes.
+Basics
+First we will focus on some basic elements that we will need but you will see that it is enough to do a lot of things.
+
+dur : duration of the animation
+from : start position or state of the animation
+to : end position or state of the animation
+repeat : if and how the animation should be repeated
+
+Position
+We will begin with the position, we want our object to move from one position to another. To start with this animation, we only need a 3 dimension vector indicating the initial position and the final position of our object.
+Our code should look like this :
+<a-animation attribute=""position""
+    dur=""1000""
+    from=""1 0 0""
+    to=""0 0 1"">
+</a-animation>
+
+Rotation
+Rotations work the same, except that instead of a vector you have to indicate three angles :
+<a-animation attribute=""rotation""
+    dur=""2000""
+    from=""0 0 0""
+    to=""360 0 0""
+    repeat=""indefinite"">
+</a-animation>
+
+You can either make your entity rotate on itself:
+
+You can access the full code here.
+Or make it rotates around an object:
+
+And the full code is here.
+Others properties
+This animation pattern works on a lot of others properties, for example :
+
+Scale :
+
+<a-animation
+    attribute=""scale""
+    to=""2 2 3"">
+</a-animation>
+
+
+Color :
+
+<a-animation
+    attribute=""color""
+    to=""red"">
+</a-animation>
+
+Trigger
+a-animation has a trigger : begin. That can either be used with a delay or an event. For example :
+<a-animation
+    begin=""3000""
+    attribute=""color""
+    to=""red"">
+</a-animation>
+
+This animation will start in 3000ms.
+Otherwise with an event you can use :
+<a-entity id=""entity"">
+<a-animation
+    begin=""colorChange""
+    attribute=""color""
+    to=""red"">
+</a-animation>
+
+With the event emission :
+document.querySelector('#entity').emit('colorChange');
+
+Combining
+You can of course, use multiple animations either by having multiple entities with their own animations or by having imbricated entities that share animation.
+First case is very simple you only have to add multiple entities with an animation for each.
+Second one is more difficult because you must add an entity inside an entity, like in this example :
+<a-entity>
+    <a-animation attribute=""rotation""
+      dur=""2000""
+      easing=""linear""
+      from=""0 0 0""
+      to=""0 360 0""
+      repeat=""indefinite""></a-animation>
+          <a-entity rotation=""0 0 25"">
+              <a-sphere position=""2 0 2""></a-sphere>
+          </a-entity>
+</a-entity>
+
+The first entity is used as the axis for our rotating animation.
+3 – Model loading
+Type of models
+You can also load a 3D model inside ARjs and project it on a marker. A-frame works with various models type but glTF is privilegied so you should use it.
+You can generate your model from software like Blender. I have not so much experience in this area, but if you are interested you should give a look at this list of tutorials: https://www.blender.org/support/tutorials/
+You can also use an online library to download models, some of them even allow you to directly use their models.
+Loading a model from the internet
+During the building of this tutorial, I found KronosGroup github that allow me to made my very first examples with 3d model. You can find all their work here : https://github.com/KhronosGroup/glTF-Sample-Models
+We will now discover a new component from A-frame : a-asset. It is used to load your assets inside A-frame, and as you can guess our 3d model is one of our asset.
+To load your 3d model, we will use the following piece of code :
+<a-assets>
+      <a-asset-item id=""smiley"" src=""https://cdn.rawgit.com/KhronosGroup/glTF-Sample-Models/9176d098/1.0/SmilingFace/glTF/SmilingFace.gltf""></a-asset-item>
+</a-assets>
+
+You can of course load your very own model the same way.
+a-asset works as a container that will contain the a-asset-item you will need in your page. Those a-asset-item are used to load 3d model.
+The full example look like this.
+Display your model
+Now that we have loaded our model, we can add it into our scene and start manipulating it. To do that we will need to declare an a-entity inside our a-scene that will be binded to the id of our a-asset-item. The code look like :
+<a-entity gltf-model=""#smiley"" rotation= ""180 0 0"">
+</a-entity>
+
+Remember what we did in the previous part with animation. We are still working with a-entity so we can do the same here. The full code for our moving smiley is here.
+And here is a demo :
+
+4 – Markers
+For now we only have used Hiro marker, now we will see how we can use other kind of marker.
+Barcode
+In ARjs barcode are also implemented in case you need to have a lot of different marker without waiting to create them from scratch. You first need to declare in the a-scene component what kind of marker you are looking for :
+<a-scene arjs='detectionMode: mono_and_matrix; matrixCodeType: 5x5;'></a-scene>
+
+As you can guess, our value will be found in a 5×5 matrix. And now the a-marker component will look like :
+<a-marker type='barcode' value='5'></a-marker>
+
+Custom marker
+You can also use your very own custom marker. Select the image you want, and use this tool developed by ARjs developer.
+You can then download the .patt file and you can use it in your application, like this:
+<a-marker-camera type='pattern' url='path/to/pattern-marker.patt'></a-marker-camera>
+
+Multiple markers
+<script src=""https://aframe.io/releases/0.6.0/aframe.min.js""></script>
+<script src=""https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js""></script>
+<body style='margin : 0px; overflow: hidden;'>
+  <a-scene embedded arjs='sourceType: webcam;'>
+
+    <a-marker type='pattern' url='path/to/pattern-marker.patt'>
+      <a-box position='0 0.5 0' material='color: red;'></a-box>
+    </a-marker>
+
+
+    <a-marker preset='hiro'>
+      <a-box position='0 0.5 0' material='color: green;'></a-box>
+    </a-marker>
+
+
+    <a-marker type='barcode' value='5'>
+      <a-box position='0 0.5 0' material='color: blue;'></a-box>
+    </a-marker>
+
+
+    <a-entity camera></a-entity>
+  </a-scene>
+</body>
+
+What’s next
+You now have everything you need to start and deploy a basic AR web application using ARjs.
+If you are interested in web augmented or virtual reality you can give a deeper look at the A-Frame library so that you will see you can build more custom component or even component you can interact with.
+
+										You liked this article? You'd probably be a good match for our ever-growing tech team at Theodo. Join Us
+										
+	WRITTEN BY
+
+	
+		    
+  		
+  			
+  				  			
+  		
+
+  		
+				Bastien Teissier
+  			
+  				Web developer at Theodo  			
+  		
+    
+			
+
+									"
+"
+										Thanks to a new colleague of mine, I have learned how to make my git history cleaner and more understandable. 
+The principle is simple: rebase your branch before you merge it. But this technique also has weaknesses. In this article, I will explain what a rebase and a merge really do and what are the implications of this technique.
+Basically, here is an example of my git history before and after I used this technique.
+
+Stay focus, rebase and merge are no joke! 
+What is the goal of a rebase or a merge ?
+Rebase and merge both aim at integrating changes that happened on another branch into your branch.
+What happens during a merge ?
+First of all there are two types of merge:
+
+Fast-forward merge
+3-way merge
+
+Fast-forward merge
+A fast-forward merge happens when the most recent shared commit between the two branches is also the tip of the branch in which you are merging.
+The following drawing shows what happens during a fast-forward merge and how it is shown on a graphical git software.
+A: the branch in which you are merging
+B: the branch from which you get the modifications
+
+git checkout A
+git merge B
+
+
+As you can see, git simply brings the new commits on top of branch A. After a fast-forward merge, branches A and B are exactly the same.
+Notes:
+
+git checkout A, git rebase B you would have had the exact same result!
+git checkout B, git merge A would have left the branches in the “before” situation, since branch A has no new commits for branch B.
+
+3-way merge
+A 3-way merge happens when both branches have had new commits since the last shared commit.
+The following drawing shows what happens during a 3-way merge and how it is shown in a graphical git software.
+A: the branch in which you are merging
+B: the branch from which you get the modifications
+
+git checkout A
+git merge B
+
+
+During a 3-way merge, git creates a new commit named “merge commit” (in orange) that contains:
+
+All the modifications brought by the three commits from B (in purple)
+The possible conflict resolutions
+
+Git will keep all information about the commits of the merged branch B even if you delete it. On a graphical git software, git will also keep a small loop to represent the merge.
+The default behaviour of git is to try a fast-forward merge first. If it’s not possible, that is to say if both branch have had changes since the last shared commit, it will be a 3-way merge.
+What happens during a rebase?
+A rebase differ from a merge in the way in which it integrates the modifications.
+The following drawings show what happens during a rebase and how it is shown in a graphical git software.
+A: the branch that you are rebasing
+B: the branch from which you get the new commits
+
+git checkout A
+git rebase B
+
+
+
+When you rebase A on B, git creates a temporary branch that is a copy of branch B, and tries to apply the new commits of A on it one by one.
+For each commit to apply, if there are conflicts, they will be resolved inside of the commit.
+After a rebase, the new commits from A (in blue) are not exactly the same as they were:
+
+If there were conflicts, those conflicts are integrated in each commit
+They have a new hash
+
+But they keep their original date which might be confusing since in the final branch, commits in blue were created before the two last commits in purple.
+What is the best solution to integrate a new feature into a shared branch and keep your git tree clean?
+Let say that you have a new feature made of three new commits on a branch named `feature`. You want to merge this branch into a shared branch, for exemple `master` that has received two new commits since you started from it.
+You have two main solutions: 
+First solution: 
+
+git checkout feature
+git rebase master
+git checkout master
+git merge feature
+
+
+Note : Be careful, git merge feature should do a fast-forward merge, but some hosting services for version control do a 3-way merge anyway. To prevent this, you can use git merge feature –ff-only
+Second solution:
+
+git checkout master
+git merge feature
+
+
+As you can see, the final tree is more simple with the first solution. You simply have a linear git history. On the opposite, the second solution creates a new “merge commit” and a loop to show that a merge happened.
+In this situation, the git tree is still readable, so the advantage of the first solution is not so obvious. The complexity emerges when you have several developers in your team, and several feature branches developed at the same time. If everyone uses the second solution, your git tree ends up complex with several loop, and it can even be difficult to see which commits belong to which branch!
+Unfortunately, the first solution has a few drawbacks:
+History rewriting
+When you use a rebase, like in the first solution, you “rewrite history” because you change the order of past commits on your branch. This can be problematic if several developers work on the same branch: when you rewrite history, you have to use git push – – force in order to erase the old branch on the remote repository and put your new branch (with the new history) in its place.
+This can potentially erase changes another developer made, or introduce conflicts resolution for him.
+To avoid this problem, you should only rebase branches on which you are the only one working. For example in our case, if you are the only one working on the feature branch.
+However you might sometime have to rewrite history of shared branches. In this case, make sure that the other developers working on the branch are aware of it, and are available to help you if you have conflicts to resolve.
+The obvious advantage of the 3-way merge here, is that you don’t rewrite history at all.
+Conflicts resolution
+When you merge or rebase, you might have to resolve conflicts.
+What I like about the rebase, is that the conflicts added by one commit will be resolved in this same commit. On the opposite, the 3-way merge will resolve all the conflicts into the new “merge commit”, mixing all together the conflicts added by the different commits of your feature branch.
+The only problem with the rebase is that you may have to resolve more conflicts, due to the fact that the rebase applies the commits of your branch one by one.
+Conclusion
+To conclude, I hope I have convinced you that rebasing your branch before merging it, can clear your git history a lot! Here is a recap of the advantages and disadvantages of the rebase and merge method versus the 3-way merge method:
+
+ 
+
+										You liked this article? You'd probably be a good match for our ever-growing tech team at Theodo. Join Us
+										
+	WRITTEN BY
+
+	
+		    
+  		
+  			
+  				  			
+  		
+
+  		
+				Jérémie Marniquet Fabre
+  			
+  				I am an agile web developer at Theodo, I enjoy outdoor sports (mountain biking, skiing...) and new technologies !  			
+  		
+    
+			
+
+									"
+"
+										Stop wasting your time on tasks your CI could do for you.
+Find 4 tips on how to better use your CI in order to focus on what matters – and what you love: code. Let’s face it: as a developer, a huge part of the value you create is your code.
+Note: Some of these tips use the GitHub / CircleCI combo. Don’t leave yet if you use BitBucket or Jenkins! I use GitHub and CircleCi on my personal and work-related projects, so they are the tools I know best. But most of those tips could be set up with every CI on the market.
+Tip 1: Automatic Changelogs
+I used to work on a library of React reusable components, like Material UI. Several teams were using components from our library, and with our regular updates, we were wasting a lot of time writing changelogs. We decided to use Conventional Commits. Conventional Commits is a fancy name for commits with a standardized name:
+example of Conventional Commits
+The standard format is “TYPE(SCOPE): DESCRIPTION OF THE CHANGES”. 
+TYPE can be
+
+feat: a new feature on your project
+fix: a bugfix
+docs: update documentation / Readme
+refactor: a code change that neither fixes a bug nor adds a feature
+or others…
+
+SCOPE (optional parameter) describes what part of your codebase is changed within the commit.
+DESCRIPTION OF THE CHANGES is pretty much what you would write in a “traditional” commit message. However, you can use keywords in your commit message to add more information. For instance:
+fix(SomeButton): disable by default to fix IE7 behaviour
+BREAKING CHANGE: prop `isDisabled` is now mandatory
+Why is this useful? Three main reasons:
+
+Allow scripts to parse the commit names, and generate changelogs with them
+Help developers thinking about the impact of their changes (Does my feature add a Breaking Change?)
+Allow scripts to choose the correct version bump for your project, depending on “how big” the changes in a commit are (bugfix: x.y.Z, feature: x.Y.z, breaking change: X.y.z)
+
+This standard version bump calculation is called Semantic Versioning. Depending of the version bump, you can anticipate the impact on your app and the amount of work needed.
+Be careful though! Not everyone follows this standard, and even those who do can miss a breaking change! You should never update your dependencies without testing everything is fine 😉
+How to set up Conventional Commits
+
+Install Commitizen
+Install Semantic Releases
+Add GITHUB_TOKEN and NPM_TOKEN to the environment variables of your CI
+Add `npx semantic-release` after the bundle & tests steps on your CI master/production build
+Use `git cz` instead of `git commit` to get used to the commit message standard
+Squash & merge your feature branch on master/production branch
+
+When you get used to the commit message standard, you can go back to `git commit`, but remember the format! (e.g: `git commit -m “feat: add an awesome feature”`)
+Now, every developer working on your codebase will create changelogs without even noticing it. Plus, if your project is used by others, they only need a glance at your package version/changelog to know what changes you’ve made, and if they are Breaking.
+Tip 2a: Run parallel tasks on your CI
+Why do I say task instead of tests? Because a CI can do a lot more than run tests! You can:
+
+Generate automatic changelogs 😉 and version your project
+Build and push the bundle on a release branch
+Deploy your app
+Deploy your documentation site
+
+There are several ways to use parallelism to run your tasks.
+The blunt approach
+This simply consists of using the built-in parallelism of your tasks, combined with a multi-thread CI container.
+With Jest, you can choose the number of workers (threads) to use for your test with the `–max-workers` flag.
+With Pytest, try xdist and the `-n` flag to split your tests on multiple CPUs.
+Another way of parallelizing tests is by splitting the test files between your CI containers, as React tries to do it. However, I won’t write about this approach in this article since the correct way of doing it is nicely explained in the CircleCi docs.
+ 
+Tip 2b: CircleCI Workflows
+With Workflows, we reduced our CI Build time by 25% on feature branches (from 11″ to 8″30) and by 30% on our master branch (from 16″30 to 11″30). With an average of 7 features merged on master a day, this is 1 hour and 30 minutes less waiting every day for our team.
+Workflow is a feature of CircleCI. Group your tasks in Jobs, then order your Jobs how it suits your project best. Let’s imagine you are building a library of re-usable React Components (huh, I think I’ve already read that somewhere…). Your CI:
+
+Sets up your project (maybe spawn a docker, install your dependencies, build your app)
+Runs unit/integration tests
+Runs E2E tests
+Deploys your Storybook
+Publishes your library
+
+Each of those bullet points can be a Job: it may have several tasks in it, but all serve the same purpose. But do you need to wait for your unit tests to pass before launching your E2E tests? Those two jobs are independent and could be running on two different machines.
+Our CircleCI workflow
+Extract of our config.yml
+As you can see, it is pretty straight-forward to re-order or add dependencies between steps. For more info on how to setup Workflows, check out the documentation.
+This is also useful for cross-platform testing (you can take a look at Yarn’s workflows).
+Note: Having trouble setting up a workflow? You can SSH on the machine during the build.
+ 
+Parallelization drawbacks
+But be careful with the parallelism: resources are not unlimited; if you share your CI plan with other teams in your organization, make sure using more resources for parallelism will not be counter-productive at a larger scale. You can easily understand why using 2 machines for 10 minutes can be worse than using 1 machine for 15 minutes:
+ 
+Project #2 is queued on CI because there is no machine free when the build was triggered
+ 
+Plus, sharing the Workspace (the current state) of one machine to others (e.g: after running `yarn`, to make your dependencies installed for every job) costs time (both when saving the state on the first machine and loading it on the other).
+So, when should I parallelize my CI tasks?
+A good rule of thumb is always keeping jobDuration > (nb_containers * workspaceSharingDuration).
+Workspace sharing can take up to a minute for a large codebase. You should try several workflow configurations to find what’s best for you.
+ 
+Tip 3: Set up cron(tab)s
+Crontabs help make your CI more reliable without making builds longer.
+
+Want to run in-depth performance tests that need to send requests to your app? Schedule it for night time with a cron!
+Want to publish a new version of your app every week? Cron.
+Want to train your ML model but it takes hours? Your CI could trigger the training every night.
+
+Some of you may wonder: what is a cron/crontab? Cron(tab) is an abbreviation of ChronoTable, a job scheduler. A cron is a program that executes a series of instructions at a given time. It can be once an hour, once a day, once a year…
+I worked on a project in finance linking several sources of data and API’s. Regression was the biggest fear of our client. If you give a user outdated or incorrect info, global financial regulators could issue you a huge fine. Therefore, I built a tool to generate requests with randomized parameters (country, user profile…), play them, and check for regressions. The whole process can take an hour. We run it via our CI, daily, at night, and it saved the client a lot of trouble.
+You can easily set up crons on CircleCi if you’ve already tried Jobs/Workflows. Check out the documentation.
+Note: Crons use the POSIX date-time notation, which can be a bit tricky at first. Check out this neat Crontab Tester tool to get used to it!
+ 
+Misc tips:
+
+Learn Shell! All Continuous Integration / Continuous Delivery systems can run Shell scripts. Don’t be afraid to sparkle some scripts in your build! Add quick checks between/during tasks to make debugging easier, or make your build fail faster: you don’t want to wait for the full 10 minutes when you can check at 2’30 that your lockfile is not up-to-date!
+Use cache on your project dependencies!
+Add extra short task to your CI to connect useful tools like Codecov.io or Danger
+
+ 
+If you have any other tip you would like to share, don’t hesitate!
+ 
+
+										You liked this article? You'd probably be a good match for our ever-growing tech team at Theodo. Join Us
+
+										
+	WRITTEN BY
+
+	
+		    
+  		
+  			
+  				  			
+  		
+
+  		
+				Aurélien Le Masson
+  			
+  				Developer @ Theodo  			
+  		
+    
+			
+
+									"
+"
+										This is a quick guide on how to set up the debugger in VS code server-side for use with Node.js in a Docker container. I recently worked on a project which uses the Koa.js framework as the API. Whilst trying to set up the debugger with VS code, a google search led to several articles that had conflicting information about how to set it up and the port number to expose, or was overly verbose and complicated.
+To keep things simple, I have split this into 3 steps.
+1) Check version of Node.js on server
+To do this with docker-compose set up, use the following, replace [api] with the name of your docker container.
+docker-compose exec api node --version
+Inspector Protocol (Node V7+, since Oct 2016)
+Recent versions of Node.js now uses the inspector protocol. This is easier to set up and is the default setting for new Node.js applications, as most documentation will refer to this protocol. This means that:
+
+The --inspect flag is required when starting the node process.
+By default, the port 9229 is exposed, and is equivalent to --inspect:9229
+The port can be changed, eg. --inspect-brk:1234 . Here, the ‘-brk’ flag adds a breakpoint on start.
+
+Legacy Protocol (Node V6 and earlier)
+Older versions of Node.js (prior to V7) uses the ‘Legacy Debugger’. The version of Node.js used on my project was 6.14. This means that:
+
+The --debug flag is required when starting the node process.
+By default, the port 5858 is exposed, and is equivalent to --debug:5858
+This port cannot be changed.
+
+For more information goto:
+https://code.visualstudio.com/docs/nodejs/nodejs-debugging
+https://nodejs.org/en/docs/guides/debugging-getting-started/
+2) Expose port in Node and Docker
+In ‘package.json’, add --debug:5858  (or --inspect:9229 depending on Node version) when starting Node, so:
+""dev"": ""nodemon index.js"", becomes
+""debug"": ""nodemon --debug:5858 index.js"",
+In ‘docker-compose.yml’, run the debug node command and expose the port. In my case:
+api:
+build: ./api
+command: yarn dev
+volumes:
+- ./api:/code
+ports:
+- ""4000:4000""
+becomes:
+api:
+build: ./api
+command: yarn debug
+volumes:
+- ./api:/code
+ports:
+- ""4000:4000""
+- ""5858:5858""
+3) Set launch configuration of Debugger
+In ‘/.vscode/launch.json’, my launch configuration is:
+{
+""type"": ""node"",
+""request"": ""attach"",
+""name"": ""Docker: Attach to Node"",
+""port"": 5858,
+""address"": ""localhost"",
+""localRoot"": ""${workspaceFolder}/api/"",
+ ""remoteRoot"": ""/code/"",
+""protocol"": ""legacy""
+}
+The port and protocol needs to correspond to the version of Node used as determine above. For newer versions of Node: ""port"": ""9229"" and ""protocol"": ""inspector"" should be used.
+“localRoot” and “remoteRoot” should be set to the folder corresponding to the entry point (eg. index.js) of your Node application in the local repository and the docker folder respectively.
+4) Attach debugger and go!
+In VS code, set your breakpoints and press F5 or click the green triangle button to start debugging! By default VS code comes with a debug panel to the left and debug console to the bottom, and a moveable debug toolbar. Mousing over a variable shows its values if it has any.
+
+ 
+I hope this article has been useful, and thanks for reading my first tech blog!  
+
+										You liked this article? You'd probably be a good match for our ever-growing tech team at Theodo. Join Us
+
+										
+	WRITTEN BY
+
+	
+		    
+  		
+  			
+  				  			
+  		
+
+  		
+				Ho-Wan To
+  			
+  				  			
+  		
+    
+			
+
+									"
+"
+										How to recode Big Brother in 15 min on your couch
+Face Recognition Explained
+In this article, we will step by step implement a smart surveillance system, able to recognise people in a video stream and tell you who they are. 
+More seriously, we’ll see how we can recognise in real-time known faces that appear in front of a camera, by having a database of portraits containing those faces.
+First, we’ll start by identifying the different essential features that we’ll need to implement. To do that, we’ll analyse the way we would to that, as human beings (to all the robots that are reading those words, I hope I don’t hurt your feelings too much and I truly apologize for the methodology of this article).
+Ask yourself : if someone passes just in front of you, how would you recognise him ?
+
+You’ll need first to see the person
+You then need to focus on the face itself
+Then there are actually two possibilities.
+
+Either I know this individual and I can recognise him by comparing his face with every face I know.
+Or I don’t know him
+
+
+
+Let’s see now how to the algo will do those different steps.
+First step of the process : seeing the person
+This is quite a simple step. We’ll simply need a computer and a webcam, to capture the video stream. 
+We’ll use openCV Python. With a few lines of code, we’ll be able to capture the video stream, and dispose of the frame one by one.
+import cv2
+
+video_capture = cv2.VideoCapture(0)
+
+while True:
+   # Capture frame-by-frame
+   frame = video_capture.read()
+
+   # Display the resulting frame
+   cv2.imshow('Video', frame)
+
+   if cv2.waitKey(1) & 0xFF == ord('q'):
+       break
+
+# When everything is done, release the capture
+video_capture.release()
+cv2.destroyAllWindows()
+
+
+How to detect a face in a picture ?
+To be able to find a face in the picture, let’s ask ourselves, what is a face and how can we discriminate a face from Gmail’s logo for example ?
+
+
+We actually do it all the time without even thinking about it. But how can we know that easily that all these pictures are faces ?
+
+When we look at those different pictures, photographs and drawings, we see that a face is actually made of certain common elements : 
+
+A nose
+Two eyes
+A mouth 
+Ears
+…
+
+But not only are the presence of these elements essential, but their positions is also paramount. 
+Indeed, in the two pictures here, you’ll find all the elements that you’ll find in a face. Except one is a face, and one is not.
+
+So, now that we’ve seen that a face is characterised by certain criterias, we’ll turn them into simple yes-no questions, which will be very useful to find a face in a square image.
+As a matter of fact, the question “Is there a face in a picture ?” is very complex. However, we’ll be able to approximate it quite well by asking one after the other a series of simple question : “is there a nose ?” ; “Is there an eye ? If yes, is their two eyes ?” ; “Are there ears ?” ; “Is there some form of symmetry ?”. 
+All these questions are both far more simple than the complex question “Is there a face in the picture ?”, while providing us with information to know if part of the image is or is not a face. 
+For each one of these questions, a no answer is very strong and will tell us that there is definitely no face in the picture. 
+On the contrary, a yes answer will not allow us to be sure that there is a human face, but it will slightly increase the probability of the presence of a face. If the image is not a face, but it is tree, the answer to the first question “is there a nose ?” will certainly be negative. No need then to ask if there are eyes, or if there is some form of symmetry.
+However, if indeed there is a nose, we can go forward and ask “are there ears?”. If the answer is still yes, this won’t mean that there is a face, but will slightly increase the likeliness of this possibility, and we will keep digging until being sufficiently confident to say that there is a face indeed.
+The interest is that the simplicity of the questions will reduce drastically the cost of face detection, and allow to do real-time face detection on a video stream. 
+This is the principle of a detection method called “the cascade of weak classifier”. Every classifier is very weak considering that it gives only a very little degree of certitude. But if we do the checks one by one, and a region of the picture has them all, we’ll be at the end almost sure that a face is present here. 
+That’s why it is called a cascade classifier, because like a series of waterfalls, the algorithm will simply do a very simple and quick check, one by one, and will only move forward with another check if the first one is positive. 
+To do face detection on the whole picture, and considering that we don’t know in advance the size of the face, we’ll simply apply the cascade algorithm on a moving window for every frame.
+
+What we’ve explained here is the principle of the algorithm. Lots of research has been made about how to use cascade for object detection. OpenCV has a built-in way to do face detection with a cascade classifier, by using a set of 6,000 weak classifiers especially developed to do face detection.
+import cv2
+
+opencv_path = 'm33/lib/python3.7/site-packages/cv2/data/'
+face_cascade = cv2.CascadeClassifier(opencv_path + 'haarcascade_frontalface_default.xml')
+
+video_capture = cv2.VideoCapture(0)
+
+while True:
+    # Capture frame-by-frame
+    ret, frame = video_capture.read()
+
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+
+    faces = face_cascade.detectMultiScale(gray, scaleFactor=1.3, minNeighbors=5)
+ 
+    # Draw a rectangle around the faces
+    for (x, y, w, h) in faces:
+        cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
+
+    # Display the resulting frame
+    cv2.imshow('Video', frame)
+
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+
+# When everything is done, release the capture
+video_capture.release()
+cv2.destroyAllWindows()
+
+Now that we can detect the face, we need to recognise it among other known faces. Here is what we got : 
+Face recognition
+Now that we have a system able to detect a face, we need to make sense out of it and recognise the face.
+By applying the same methodology as before, we’ll find the criterias to recognise a face among others.
+To do that, let’s look at how we differentiate between two faces : Harry Potter on one side, and Aragorn on the second.
+
+Let’s make a list of the things that can differentiate them : 
+
+Form of their nose
+Form of their eyes
+Their hair
+Color of their eyes
+Distance between the eyes
+Skin color
+Beard
+Height of the face
+Width of the face
+Ratio of height to width
+
+Of course, this list is not exhaustive. However, are all those criterias good for face recognition ? 
+Skin color is a bad one for example. We’ve all seen Harry Potter or Aragorn after hard battles covered with dirt or mud, and we’re still able to recognise them easily.
+Same goes for height and width of the face. Indeed, these measures change a lot with the distance of the person to the camera. Despite that we can easily recognise the faces even when their size changes. 
+So we can keep some good criterias that will really help recognise a face : 
+
+Form of their nose
+Form of their eyes
+Distance between the eyes
+Ratio of height to width 
+Position of the nose relative to the whole face
+Form of eyebrows
+…
+
+Let’s now measure all these elements. By doing this, we’ll have a set of values that describe the face of an individual. These measures are a discrete description of what the face looks like.
+
+Actually, what we have done, is that we reduced the face to a limited number of “features” that will give us valuable and comparable information of the given face.
+
+Mathematically speaking, we have simply created a vector space projection, that allowed us to reduce the number of dimensions in our problem. From a million-dimensions vector space problems (if the picture is 1MPixel RGB image, the vector space is of 1M * 3 dimensions) to a an approximately a-hundred-dimension vector space. The problem becomes far more simple ! 
+No need to consider all the pixels in the picture at all, we only need to extract from the image a limited set of features. These extracted features can be considered as vectors that we can then compare the way we do it with any vector by computing euclidean distances for example.
+
+And just like that, comparing faces becomes mathematically as simple as computing the distance between two points on a grid, with only a few more dimensions ! To be simple, it’s as though, every portrait can then be described as a point in space. The closer points are, the more likely they describe the same face ! And that’s all !
+When we find a face in a frame, we find its position in the feature-space and we look for the nearer known point. If the distance between the two is close, we’ll consider that they’re both linked to the same face. Otherwise, if the point representing the new face is too far from all the faces known, it means we don’t know this face.
+
+To implement that, we’ll use the face_recognition Python library that allows us to use a deep learning algorithm that extracts from a face a 128-dimension vector of features. 
+We’ll do it in two steps.
+We first turn our portrait database into a set of computed feature-vectors (reference points like the Frodo point in the example above). 
+import face_recognition
+import os
+import pandas as pd
+
+def load_image_file(file):
+    im = PIL.Image.open(file)
+    im = im.convert('RGB')
+    return np.array(im)
+
+face_features = []
+names = []
+
+for counter, name in enumerate(os.listdir('photos/')):
+   if '.jpg' not in name:
+       continue
+   image = load_image_file(pictures_dir + name)
+   try:
+       face_features.append(face_recognition.face_encodings(image)[0])
+       names.append(name.replace('.jpg', ''))
+   except IndexError:
+	// happens when no face is detected
+       Continue
+
+features_df = pd.DataFrame(face_features, names)
+features_df.to_csv('database.csv')
+
+
+Then, we load the database and launch the real-time face recognition:
+import cv2
+import pandas as pd
+from helpers import load_database
+import PIL
+import numpy as np
+import face_recognition
+
+def load_image_file(file):
+    im = PIL.Image.open(file)
+    im = im.convert('RGB')
+    return np.array(im)
+
+face_features = []
+names = []
+
+for counter, name in enumerate(os.listdir('photos/')):
+   if '.jpg' not in name:
+       continue
+   image = load_image_file(pictures_dir + name)
+   try:
+       face_features.append(face_recognition.face_encodings(image)[0])
+       names.append(name.replace('.jpg', ''))
+   except IndexError:
+       # happens when no face is detected
+       Continue
+
+face_cascade= cv2.CascadeClassifier('m33/lib/python3.7/site-packages/cv2/data/haarcascade_frontalface_default.xml')
+
+video_capture = cv2.VideoCapture(0)
+
+while True:
+   # Capture frame-by-frame
+   ret, frame = video_capture.read()
+   gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+   faces = face_cascade.detectMultiScale(gray, scaleFactor=1.3, minNeighbors=5)
+  
+   # Draw a rectangle around the faces
+   for (x, y, w, h) in faces:
+       cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
+
+       pil_im = PIL.Image.fromarray(frame[y:y+h, x:x+w])
+       face = np.array(pil_im.convert('RGB'))
+       try:
+           face_descriptor = face_recognition.face_encodings(face)[0]
+       except Exception:
+           continue
+       distances = np.linalg.norm(face_descriptors - face_descriptor, axis=1)
+       if(np.min(distances) < 0.7): found_name = names[np.argmin(distances)] print(found_name) print(found_name) #y = top - 15 if top - 15 > 15 else top + 15
+       cv2.putText(frame, found_name, (y, y-15), cv2.FONT_HERSHEY_SIMPLEX,
+                   0.75, (0, 255, 0), 2)
+
+   # Display the resulting frame
+   cv2.imshow('Video', frame)
+
+   if cv2.waitKey(1) & 0xFF == ord('q'):
+       break
+
+# When everything is done, release the capture
+video_capture.release()
+cv2.destroyAllWindows()
+
+
+And here it comes ! 
+
+Here is a github repo with the code working : https://github.com/oussj/big_brother_for_dummies
+External links I used : 
+
+https://github.com/ageitgey/face_recognition
+https://medium.com/@ageitgey/machine-learning-is-fun-part-4-modern-face-recognition-with-deep-learning-c3cffc121d78
+https://realpython.com/face-recognition-with-python/
+
+
+										You liked this article? You'd probably be a good match for our ever-growing tech team at Theodo. Join Us
+
+										
+	WRITTEN BY
+
+	
+		    
+  		
+  			
+  				  			
+  		
+
+  		
+				Oussamah Jaber
+  			
+  				After graduating from MINES ParisTech, I joined Theodo as an agile web developer to use cutting-edge technology and build awesome products !  			
+  		
+    
+			
+
+									"

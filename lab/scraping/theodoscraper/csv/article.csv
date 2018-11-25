@@ -1,0 +1,135 @@
+article
+"
+										Scraping a website means extracting data from a website in a usable way.
+The ultimate goal when scraping a website is to use the extracted data to build something else.
+In this article, I will show you how to extract the content of all existing articles of Theodo’s blog with Scrapy, an easy-to-learn, open source Python library used to do data scraping.
+I personally used this data to train a machine learning model that generates new blog articles based on all previous articles (with relative success)!
+Important:
+Before we start, you must remember to always read the terms and conditions of a website before you scrape it as the website may have some requirements on how you can legally use its data (usually not for commercial use).
+You should also make sure that you are not scraping the website too aggressively (sending too many requests in a short period of time) as it may have an impact on the scraped website.
+Scrapy
+Scrapy is an open source and collaborative framework for extracting data from websites.
+Scrapy creates new classes called Spider that define how a website will be scraped by providing the starting URLs and what to do on each crawled page.
+I invite you to read the documentation on Spiders if you want to better understand how scraping is done when using Scrapy’s Spiders.
+Scrapy is a Python library that is available with pip.
+To install it, simply run pip install scrapy.
+You are now ready to start the tutorial, let’s get to it!
+Extracting all the content of our blog
+You can find all the code used in this article in the accompanying repository.
+Get the content of a single article
+First, what we want to do is retrieve all the content of a single article.
+Let’s create our first Spider. To do that, you can create an article_spider.py file with the following code:
+import scrapy
+
+
+class ArticleSpider(scrapy.Spider):
+    name = ""article""
+    start_urls = ['http://blog.theodo.fr/2018/02/scrape-websites-5-minutes-scrapy']
+
+    def parse(self, response):
+        content = response.xpath("".//div[@class='entry-content']/descendant::text()"").extract()
+        yield {'article': ''.join(content)}
+
+Let’s break everything down!
+First we import the scrapy library and we define a new class ArticleSpider derived from the Spider class from scrapy.
+We define the name of our Spider and the start_urls, the URLs that our Spider will visit (in our case, only the URL of this blog post).
+Finally, we define a parse method that will be executed on each page crawled by our spider.
+If you inspect the HTML of this page, you will see that all the content of the article is contained in a div of class entry-content.
+Scrapy provides an xpath method on the response object (the content of the crawled page) that creates a Selector object useful to select parts of the page.
+In the xpath method, it will create a Selector based on the xpath language.
+Using this method, we find the list of the text of all the descendants (divs, spans…) contained in the entry-content block.
+We then return a dictionary with the content of the article by concatenating this list of text.
+Now, if you want to see the result of this Spider, you can run the command scrapy runspider article_spider.py -o article.json.
+When you run this command, Scrapy looks for a Spider definition inside the file and runs it through its crawling engine.
+The -o flag (or --output) will put the content of our Spider in the article.json file, you can open it and see that we indeed retrieved all the content of the article!
+Navigate through all the articles of a page
+We now know how to extract the content of an article.
+But how can we extract the content of all articles contained on a page ?
+To do this, we need to identify the URLs of each article and use what we learned in the previous section to extract the content of each article.
+We could use the same Spider as the last section and give all the URLs to the start_urls attribute but that would take a lot of manual time to retrieve all the URLs.
+In a blog page like this one, you can go to an article by clicking on the title of the article.
+We must thus find a way to visit all of the articles by clicking on each titles.
+Scrapy provides another method on the response object, the css method that also creates a Selector object, but this time based on the CSS language (which is easier to use than xpath).
+If you inspect the title of an article, you can see that it is a link with a a tag contained in a div of class entry-title.
+So, to extract all the links of a page, we can use the selector with response.css('.entry-title a ::attr(""href"")').extract().
+Now let’s put two and two together and create a page_spider.py file with this code:
+import scrapy
+
+
+class PageSpider(scrapy.Spider):
+    name = ""page""
+    start_urls = ['http://blog.theodo.fr/']
+
+    def parse(self, response):
+        for article_url in response.css('.entry-title a ::attr(""href"")').extract():
+            yield response.follow(article_url, callback=self.parse_article)
+
+    def parse_article(self, response):
+        content = response.xpath("".//div[@class='entry-content']/descendant::text()"").extract()
+        yield {'article': ''.join(content)}
+
+What our PageSpider is doing here is start on the homepage of our blog and identify the URLs of each article in the page using the css method.
+Then, we use the follow method on each URL to extract the content of each article using the parse_article callback (directly inspired from the first part).
+The follow method allow us to do a new request and apply a callback on it, this is really useful to do a Spider that navigates through multiple pages.
+If you run the command scrapy runspider page_spider.py -o page.json, you will see in the page.json output that we retrieved the content of each article of the homepage.
+You may notice one of the main advantages about Scrapy: requests are scheduled and processed asynchronously.
+This means that Scrapy doesn’t need to wait for a request to be finished and processed, it can send another request or do other things in the meantime.
+Navigate through all the pages of the blog
+Now that we know how to extract the content of all articles in a page, let’s extract all the content of the blog by going through all the pages of the blog.
+On each page of the blog, at the bottom of the page, you can see an “Older posts” button that links to the previous page of the blog.
+Therefore, if we want to visit all pages of the blog, we can start from the first page and click on “Older posts” until we reach the last page (obviously, the last page of the blog does not contain the button).
+The “Older posts” button can be easily identified using the same css method as the previous section with response.css('.nav-previous a ::attr(""href"")').extract_first().
+Now let’s retrieve all the content of our blog with a blog_spider.py:
+import scrapy
+
+
+class BlogSpider(scrapy.Spider):
+    name = ""blog""
+    start_urls = ['http://blog.theodo.fr/']
+
+    def parse(self, response):
+        for article_url in response.css('.entry-title a ::attr(""href"")').extract():
+            yield response.follow(article_url, callback=self.parse_article)
+        older_posts = response.css('.nav-previous a ::attr(""href"")').extract_first()
+        if older_posts is not None:
+            yield response.follow(older_posts, callback=self.parse)
+
+    def parse_article(self, response):
+        content = response.xpath("".//div[@class='entry-content']/descendant::text()"").extract()
+        yield {'article': ''.join(content)}
+
+Now, our BlogSpider extracts all URLs of articles and calls the parse_article callback and then extracts the URL of the “Older posts” button.
+It then follows the URL and applies the parse callback on the previous page of our blog.
+If you run the command scrapy runspider blog_spider.py -o blog.json, you will see that our Spider will visit every article page and retrieve the content of each article since the beginning of our blog!
+Going further
+
+We could have also used a CrawlSpider, another Scrapy class that provides a dedicated mechanism for following links by defining a set of rules directly in the class.
+You can look at the documentation here.
+In the parse_article function, we retrieved all the text content but that also includes the aside where we have the author of each article.
+To remove it from the output, you can change the xpath by response.xpath("".//div[@class='entry-content']/descendant::text()[not(ancestor::aside)]"").
+You can see that the output of the scraper is not perfect as we see some unorthodox characters like \r, \n or \t.
+To exploit the data, we would first need to clean what we retrieved by removing unwanted characters.
+For example, we could replace \t characters to a space with a simple content.replace('\r', ' ').
+
+
+										You liked this article? You'd probably be a good match for our ever-growing tech team at Theodo. Join Us
+
+										
+	WRITTEN BY
+
+	
+		    
+  		
+  			
+  				  			
+  		
+
+  		
+				Thomas Mollard
+  			
+  				Web Developer at Theodo  			
+  		
+    
+			
+
+									"
